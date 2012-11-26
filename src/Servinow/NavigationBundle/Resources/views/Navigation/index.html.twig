@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+		<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.7.3/build/cssreset/cssreset-min.css">
+		<link rel="stylesheet" type="text/css" href="{{ asset('bundles/servinownavigation/css/navigation.css') }}">
+
+		{% block stylesheets %}{% endblock %}
+		{% block javascripts %}{% endblock %}
+
+		<title>{% block title %}{% endblock %}</title>
+	</head>
+    <body>
+		<div id="container" >
+			<header>
+				<h1><span>Servinow</span></h1>
+				<nav id="navigation" >
+					<ul class="menu" >
+						<li><a href="#TODO" >{{ "Mis pedidos"  | trans }}</a></li>
+						<li>
+							<a href="#TODO" >{{ "Restaurante"  | trans }}</a>
+							<ul class="submenu">
+								<li><a href="#TODO" >{{ "Facturación y estadísticas"  | trans }}</a></li>
+								<li><a href="#TODO" >{{ "Espacio del restaurante"  | trans }}</a></li>
+								<li><a href="#TODO" >{{ "Creación de platos"  | trans }}</a></li>
+								<li><a href="#TODO" >{{ "Creación de menús"  | trans }}</a></li>
+								<li><a href="#TODO" >{{ "Organizar mi restaurante"  | trans }}</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+
+				{% render "ServinowNavigationBundle:Navigation:userAccountBlock" %}
+			</header>
+			<article id="content" >
+				{% block content %}Hello TODO!{% endblock %}
+			</article>
+			<footer id="footer" >
+				<p>Servinow - HMI - UPV</p>
+			</footer>
+		</div>
+	</body>
+</html>

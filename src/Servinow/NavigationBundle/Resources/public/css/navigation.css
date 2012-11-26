@@ -1,0 +1,111 @@
+/* 
+    Document   : navigation
+    Created on : 25-nov-2012, 14:38:32
+    Author     : bloodsucker
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+a:focus {outline: none;}
+
+#container {}
+#container > header {
+	background-color: #333;
+	box-shadow: 0 1px 3px #333333;
+	height: 50px;
+	position: relative;
+}
+
+#container > header *, #footer * {
+	color: #F5F5F5;
+	font-family: serif;
+}
+
+#container > header h1 {
+	display: table;
+	float: left;
+	font-size: 200%;
+	padding: 0 10px;
+	height: 50px;
+}
+
+#container > header h1 span{
+	display: table-cell;
+	vertical-align: middle;
+}
+
+#navigation {
+	float: left;
+}
+
+#navigation .menu li {
+	float: left;
+	display: table;
+	height: 50px;
+	margin: 0 5px;
+}
+#navigation .menu li:first-child{
+	margin-left: 0px;
+}
+#navigation .menu li:last-child{
+	margin-right: 0px;
+}
+#navigation .menu li:hover {
+	background-color: #4E4E4E;
+	border-top: 5px solid #F5F5F5;
+	height: 45px;
+}
+
+#navigation .menu li > a {
+	text-align: center;
+	width: 200px;
+	display: table-cell;
+	vertical-align: middle;
+	font-size: 120%;
+	text-decoration: none;
+}
+
+#navigation .submenu {
+	display: none;
+	position: absolute;
+	top: 50px;
+	left: 20px;
+	padding: 5px;
+	height: 50px;
+	font-size: 95%;
+	background-color: #333;
+	box-shadow: 0 1px 3px #333333;
+}
+
+#navigation .menu li:hover .submenu, #navigation .submenu.show {
+	display: block;
+}
+
+#userAccount {
+	float: right;
+	display: table;
+	height: 50px;
+	padding: 0 10px;
+}
+#userAccount p {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: right;
+}
+
+#userAccount p a {
+}
+
+#content {
+	display: block;
+	margin: 0 auto;
+	width: 90%;
+	min-height: 100px;
+}
+
+#footer {
+	display: block;
+	text-align: center;
+	background-color: #333;
+	box-shadow: 0 -1px 3px #333333;
+}
