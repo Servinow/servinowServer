@@ -7,6 +7,8 @@
 		<link rel="stylesheet" type="text/css" href="{{ asset('bundles/servinownavigation/css/navigation.css') }}">
 
 		{% block stylesheets %}{% endblock %}
+		
+		<script src="{{asset('js/jquery-1.8.3.min.js')}}" ></script>
 		{% block javascripts %}{% endblock %}
 
 		<title>{% block title %}{% endblock %}</title>
@@ -21,17 +23,17 @@
 						<li>
 							<a href="#TODO" >{{ "Restaurante"  | trans }}</a>
 							<ul class="submenu">
+								<li><a href="#TODO" >{{ "Creación de platos"  | trans }}</a></li>
+								{#<li><a href="#TODO" >{{ "Creación de menús"  | trans }}</a></li>#}
 								<li><a href="#TODO" >{{ "Facturación y estadísticas"  | trans }}</a></li>
 								<li><a href="#TODO" >{{ "Espacio del restaurante"  | trans }}</a></li>
-								<li><a href="#TODO" >{{ "Creación de platos"  | trans }}</a></li>
-								<li><a href="#TODO" >{{ "Creación de menús"  | trans }}</a></li>
 								<li><a href="#TODO" >{{ "Organizar mi restaurante"  | trans }}</a></li>
 							</ul>
 						</li>
 					</ul>
 				</nav>
 
-				{% render "ServinowNavigationBundle:Navigation:userAccountBlock" %}
+				{% render "ServinowNavigationBundle:Navigation:userAccountBlock" with {'restaurantID': restaurantID} %}
 			</header>
 			<article id="content" >
 				{% block content %}Hello TODO!{% endblock %}
