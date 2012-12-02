@@ -48,14 +48,6 @@ class Restaurante
      * @ORM\Column(name="impuesto", type="float")
      */
     private $impuesto;
-
-    /**
-     * @var integer $cantDisponible
-     *
-     * @ORM\Column(name="cantDisponible", type="integer")
-     */
-    private $cantDisponible;
-
     
     /**
      * @ORM\OneToMany(targetEntity="Pedido", mappedBy="restaurante")
@@ -179,29 +171,6 @@ class Restaurante
     public function getImpuesto()
     {
         return $this->impuesto;
-    }
-
-    /**
-     * Set cantDisponible
-     *
-     * @param integer $cantDisponible
-     * @return Restaurante
-     */
-    public function setCantDisponible($cantDisponible)
-    {
-        $this->cantDisponible = $cantDisponible;
-    
-        return $this;
-    }
-
-    /**
-     * Get cantDisponible
-     *
-     * @return integer 
-     */
-    public function getCantDisponible()
-    {
-        return $this->cantDisponible;
     }
 
     /**
