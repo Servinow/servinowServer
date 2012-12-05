@@ -87,7 +87,12 @@
             Raphael(divChart, width, height).pieChart(x, y, c, values, labels, stroke);
         }
     });
-    $.createPieChart($("#topProductosIngresos"), 650, 340, 480, 170, 150, '#fff');
-    $.createPieChart($("#topProductosCantidad"), 650, 340, 480, 170, 150, '#fff');
+    $.createPieChart($("#tablePago"), 650, 340, 480, 170, 150, '#fff');
 })($);
 
+$('#datepicker_fecha_inicio').change(function() {
+    $('#datepicker_fecha_inicio').attr('value') = 2012;
+});
+
+$('#datepicker_fecha_fin').change(function() {
+});

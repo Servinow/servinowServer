@@ -12,4 +12,21 @@ use Doctrine\ORM\EntityRepository;
  */
 class MesaRepository extends EntityRepository
 {
+    public function findMesasIngresosCantidad($fecha_inicio, $fecha_fin, $restaurante){
+        $em = $this->getEntityManager();
+        $qb = $em->getRepository('ServinowEntitiesBundle:Mesa')->createQueryBuilder('m');
+        $pedidos = $qb->select('m.id','COUNT(ped.id) AS pedidos', 
+                'SUM(l.cantidad * pro.precio) AS ingresos')
+                ->where(
+                $qb->expr()->andX(
+                        $qb->expr()->gte('ped.fecha', $fecha_inicio),
+                        $qb->expr()->lte('ped.fecha', $fecha_fin),
+                        $qb->expr()->eq('ped.restaurante', $restaurante),
+                        $qb->expr()->eq('ped.pagado', true)
+                ))->leftJoin('m.pedidos', 'ped')
+                ->leftJoin('ped.lineasPedido', 'l')
+                ->leftJoin('l.producto', 'pro')
+                ->groupBy('m.id');
+        return $qb->getQuery()->getResult();
+    }
 }

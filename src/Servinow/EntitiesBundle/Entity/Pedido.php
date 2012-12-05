@@ -41,6 +41,13 @@ class Pedido
      * @ORM\Column(name="confirmado", type="boolean")
      */
     private $confirmado;
+    
+    /**
+     * @var boolean $metodoPago
+     *
+     * @ORM\Column(name="metodo_pago", type="string", length=255)
+     */
+    private $metodoPago;
 
     /**
      * @ORM\OneToMany(targetEntity="LineaPedido", mappedBy="pedido")
@@ -222,5 +229,28 @@ class Pedido
     public function getMesa()
     {
         return $this->mesa;
+    }
+
+    /**
+     * Set metodoPago
+     *
+     * @param string $metodoPago
+     * @return Pedido
+     */
+    public function setMetodoPago($metodoPago)
+    {
+        $this->metodoPago = $metodoPago;
+    
+        return $this;
+    }
+
+    /**
+     * Get metodoPago
+     *
+     * @return string 
+     */
+    public function getMetodoPago()
+    {
+        return $this->metodoPago;
     }
 }

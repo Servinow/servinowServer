@@ -1,9 +1,8 @@
 {% extends 'ServinowMovimientosDeCajaBundle::Productos/base.html.twig' %}
 
 {%block central_movimientos_caja_productos%}
-{# TO DO
-#}
-<table id="topProductos" hidden="true">
+
+<table id="topProductosCantidad" hidden="true">
     <thead>
         <tr>
             <th>Producto</th>
@@ -11,46 +10,27 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>Chivito</td>
-            <td>60</td>
-        </tr>
-        <tr>
-            <td>Cocacola</td>
-            <td>45</td>
-        </tr>
-        <tr>
-            <td>Macarrones</td>
-            <td>32</td>
-        </tr>
-        <tr>
-            <td>Filete con guarnicion</td>
-            <td>30</td>
-        </tr>
-        <tr>
-            <td>Sandwich mixto</td>
-            <td>26</td>
-        </tr>
-        <tr>
-            <td>Merluza con guarnicion</td>
-            <td>26</td>
-        </tr>
-        <tr>
-            <td>Hamburgesa con patatas</td>
-            <td>24</td>
-        </tr>
-        <tr>
-            <td>Cerveza</td>
-            <td>24</td>
-        </tr>
-        <tr>
-            <td>Calamares en su tinta</td>
-            <td>12</td>
-        </tr>
-        <tr>
-            <td>Gazpacho manchego</td>
-            <td>8</td>
-        </tr>
+        {% for producto in productosCantidad %}
+            <tr>
+                <td>{{producto.nombre}}</td>
+                <td>{{producto.total}}</td>
+            </tr>
+        {% endfor %}
     </tbody>
-</table>​
-{%endblock%}
+</table>
+<table id="topProductosIngresos" hidden="true">
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Ingresos</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for producto in productosIngresos %}
+            <tr>
+                <td>{{producto.nombre}}</td>
+                <td>{{producto.total}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>{%endblock%}

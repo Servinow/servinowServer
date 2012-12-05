@@ -1,5 +1,27 @@
 {% extends 'ServinowMovimientosDeCajaBundle::General/base.html.twig' %}
 
+{%block javascripts_end_body %}
+<script src="{{asset('bundles/servinowmovimientosdecaja/js/pago.js')}}"></script>
+{%endblock %}
+
 {% block central_movimientos_caja_general%}
-{# TODO#}
+
+<table id="tablePago" hidden="true">
+    <thead>
+        <tr>
+            <th>Metodo pago</th>
+            <th>Cantidad</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Paypal</td>
+            <td>{{pedidosPaypal}}</td>
+        </tr>
+        <tr>
+            <td>Efectivo</td>
+            <td>{{pedidosEfectivo}}</td>
+        </tr>
+    </tbody>
+</table>​
 {% endblock %}

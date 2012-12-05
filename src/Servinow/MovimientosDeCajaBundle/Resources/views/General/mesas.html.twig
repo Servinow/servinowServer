@@ -1,5 +1,24 @@
 {% extends 'ServinowMovimientosDeCajaBundle::General/base.html.twig' %}
 
 {% block central_movimientos_caja_general%}
-{# TODO#}
+
+<table id="mesas">
+    <thead>
+        <tr>
+            <th>Mesa</th>
+            <th>Ingresos</th>
+            <th>Número de pedidos</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for mesa in mesas %}
+            <tr>
+                <td>{{mesa.id}}</td>
+                <td>{{mesa.ingresos}}</td>
+                <td>{{mesa.pedidos}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
 {% endblock %}

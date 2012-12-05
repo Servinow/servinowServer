@@ -11,8 +11,24 @@
     <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
     <script>
         $(function() {
-            $( "#datepicker_fecha_inicio" ).datepicker();
-            $( "#datepicker_fecha_fin" ).datepicker();
+            $( "#datepicker_fecha_inicio" ).datepicker({
+                defaultDate: "+1w",
+                numberOfMonths: 1,
+                dateFormat: "yymmdd",
+                maxDate: 0,
+                onClose: function( selectedDate ) {
+                    $( "#datepicker_fecha_fin" ).datepicker( "option", "minDate", selectedDate );
+                }
+            });
+            $( "#datepicker_fecha_fin" ).datepicker({
+                defaultDate: "+1w",
+                numberOfMonths: 1,
+                dateFormat: "yymmdd",
+                maxDate: 0,
+                onClose: function( selectedDate ) {
+                    $( "#datepicker_fecha_inicio" ).datepicker( "option", "maxDate", selectedDate );
+                }
+            });
         });
     </script>
     <script src="https://raw.github.com/DmitryBaranovskiy/raphael/master/raphael-min.js"></script>
@@ -27,15 +43,14 @@
         {% trans %}products {%endtrans%}
     </h1>
     <div id="nav_movimientos_caja_productos_container">
-            <p>
-                Fecha inicio: 
-                <input type="text" id="datepicker_fecha_inicio" />
-            </p>
-
-            <p>
-                Fecha fin: 
-                <input type="text" id="datepicker_fecha_fin" />
-            </p>
+        
+            <form id="fechas">
+                <label for="datepicker_fecha_inicio">Fecha inicio:</label> 
+                <input type="text" name="fecha_inicio" id="datepicker_fecha_inicio" value="{{fecha_inicio}}"/>
+                <label for="datepicker_fecha_fin">Fecha fin:</label>           
+                <input type="text" name="fecha_fin" id="datepicker_fecha_fin" value="{{fecha_fin}}"/>
+                <button type="submit" class="btn">Buscar</button>
+            </form>
             
             <form class="formulario_buscar">
                 <input type="text" name="producto" id="buscar_producto" 

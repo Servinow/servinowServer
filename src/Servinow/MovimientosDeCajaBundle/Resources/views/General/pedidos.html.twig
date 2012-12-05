@@ -1,5 +1,25 @@
 {% extends 'ServinowMovimientosDeCajaBundle::General/base.html.twig' %}
 
+{%block javascripts_end_body %}
+<script src="{{asset('bundles/servinowmovimientosdecaja/js/pedidos.js')}}"></script>
+{%endblock %}
+
 {% block central_movimientos_caja_general%}
-{# TODO#}
+<table id="pedidos">
+    <thead>
+        <tr>
+            <th>Dia</th>
+            <th>Pedidos</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for pedido in dia_pedidos %}
+            <tr>
+                <td>{{pedido.fecha}}</td>
+                <td>{{pedido.pedidos}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>​
+<h1>Media Ingreso por pedido: {{mediaIngresosPedido}}</h1>
 {% endblock %}

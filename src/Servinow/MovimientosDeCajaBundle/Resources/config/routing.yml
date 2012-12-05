@@ -24,17 +24,9 @@ servinow_movimientos_de_caja_general_mesas:
 servinow_movimientos_de_caja_productos:
     pattern:  /productos/
     defaults: { _controller: ServinowMovimientosDeCajaBundle:Productos:productos }
-    
-servinow_movimientos_de_caja_productos_id:
-    pattern:  /productos/{producto_id}/
-    defaults: { _controller: ServinowMovimientosDeCajaBundle:Productos:productos_id }
 
 # Movimientos
 servinow_movimientos_de_caja_movimientos:
     pattern:  /movimientos/
     defaults: { _controller: ServinowMovimientosDeCajaBundle:Movimientos:movimientos }
-    
-servinow_movimientos_de_caja_movimientos_fecha:
-    pattern:  /movimientos/{fecha}/
-    defaults: { _controller: ServinowMovimientosDeCajaBundle:Movimientos:movimientos_fecha }
     

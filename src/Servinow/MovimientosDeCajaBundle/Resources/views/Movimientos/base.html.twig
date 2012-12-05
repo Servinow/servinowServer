@@ -11,7 +11,12 @@
     <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
     <script>
         $(function() {
-            $( "#datepicker_fecha_dia" ).datepicker();
+            $( "#datepicker_fecha_dia" ).datepicker({
+                defaultDate: "+1w",
+                numberOfMonths: 1,
+                dateFormat: "yymmdd", 
+                maxDate: 0
+            });
         });
     </script>
 {% endblock %}
@@ -24,10 +29,11 @@
         {% trans %}daily.summary {%endtrans%}
     </h1>
     <div id="nav_movimientos_caja_movimientos_container">
-            <p>
-                Dia: 
-                <input type="text" id="datepicker_fecha_dia" />
-            </p>
+            <form id="fecha">
+                <label for="datepicker_fecha_dia">Dia:</label> 
+                <input type="text" name="fecha" id="datepicker_fecha_dia" value="{{fecha}}"/>
+                <button type="submit" class="btn">Buscar</button>
+            </form>
     </div>
 </div>
 

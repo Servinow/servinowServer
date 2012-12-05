@@ -12,4 +12,51 @@ use Doctrine\ORM\EntityRepository;
  */
 class ProductoRepository extends EntityRepository
 {
+    public function findProductosTop10Ingresos($fecha_inicio, $fecha_fin, $restaurante){
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        $qb->select('prod.id', 'prod.nombre', 'SUM(l.cantidad * prod.precio) AS total')
+                ->from('ServinowEntitiesBundle:Pedido', 'ped')
+                ->where($qb->expr()->andX(
+                        $qb->expr()->gte('ped.fecha', $fecha_inicio),
+                        $qb->expr()->lte('ped.fecha', $fecha_fin),
+                        $qb->expr()->eq('ped.restaurante', $restaurante),
+                        $qb->expr()->eq('ped.pagado', true)
+                ))->leftJoin('ped.lineasPedido', 'l')
+                ->leftJoin('l.producto', 'prod')
+                ->groupBy('prod.id')
+                ->orderBy('total', 'DESC');
+        return $qb->getQuery()->getResult();
+    }
+    
+    public function findProductosTop10Cantidad($fecha_inicio, $fecha_fin, $restaurante){
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        $qb->select('prod.id', 'prod.nombre', 'SUM(l.cantidad) AS total')
+                ->from('ServinowEntitiesBundle:Pedido', 'ped')
+                ->where($qb->expr()->andX(
+                        $qb->expr()->gte('ped.fecha', $fecha_inicio),
+                        $qb->expr()->lte('ped.fecha', $fecha_fin),
+                        $qb->expr()->eq('ped.restaurante', $restaurante),
+                        $qb->expr()->eq('ped.pagado', true)
+                ))->leftJoin('ped.lineasPedido', 'l')
+                ->leftJoin('l.producto', 'prod')
+                ->groupBy('prod.id')
+                ->orderBy('total', 'DESC');
+        return $qb->getQuery()->getResult();
+    }
+    
+    public function findProductoCantidadIngresos($producto, $fecha_inicio, $fecha_fin, $restaurante){
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        $qb->select('prod.id', 'prod.nombre', 'SUM(l.cantidad) AS cantidad', 
+                'SUM(l.cantidad * prod.precio) AS ingresos')
+                ->from('ServinowEntitiesBundle:Pedido', 'ped')
+                ->where($qb->expr()->andX(
+                        $qb->expr()->gte('ped.fecha', $fecha_inicio),
+                        $qb->expr()->lte('ped.fecha', $fecha_fin),
+                        $qb->expr()->eq('ped.restaurante', $restaurante),
+                        $qb->expr()->eq('prod.id', $producto),
+                        $qb->expr()->eq('ped.pagado', true)
+                ))->leftJoin('ped.lineasPedido', 'l')
+                ->leftJoin('l.producto', 'prod');
+        return $qb->getQuery()->getSingleResult();
+    }
 }
