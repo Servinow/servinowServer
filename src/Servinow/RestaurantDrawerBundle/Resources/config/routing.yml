@@ -1,0 +1,7 @@
+servinow_restaurant_drawer_homepage:
+    pattern:  /
+    defaults: { _controller: ServinowRestaurantDrawerBundle:Drawer:index }
+
+servinow_restaurant_drawer_homepage_api_addtable:
+    pattern:  /api/addTable/
+    defaults: { _controller: ServinowRestaurantDrawerBundle:Api:addTable }

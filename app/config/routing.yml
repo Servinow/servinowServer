@@ -6,6 +6,10 @@ servinow_navigation:
     resource: "@ServinowNavigationBundle/Resources/config/routing.yml"
     prefix:   /{restaurantID}/
 
+servinow_restaurant_drawer:
+    resource: "@ServinowRestaurantDrawerBundle/Resources/config/routing.yml"
+    prefix:   /{restaurantID}/organizador/
+
 # Internal routing configuration to handle ESI
 #_internal:
 #    resource: "@FrameworkBundle/Resources/config/routing/internal.xml"

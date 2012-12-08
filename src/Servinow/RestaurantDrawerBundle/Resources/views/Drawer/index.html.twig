@@ -1,0 +1,101 @@
+{% extends 'ServinowNavigationBundle:Navigation:index.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/servinowrestaurantdrawer/css/ui-lightness/jquery-ui-1.9.2.custom.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/servinowrestaurantdrawer/css/jquery.tooltip.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/servinowrestaurantdrawer/css/drawer.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript" src="{{asset('bundles/servinowrestaurantdrawer/js/jquery-ui-1.9.2.custom.min.js')}}" ></script>
+<script type="text/javascript" src="{{asset('bundles/servinowrestaurantdrawer/js/jquery.tooltip.min.js')}}" ></script>
+<script type="text/javascript" src="{{asset('bundles/servinowrestaurantdrawer/js/Drawer.js')}}" ></script>
+<script type="text/javascript" src="{{asset('bundles/servinowrestaurantdrawer/js/DrawerKnowledge.js')}}" ></script>
+<script type="text/javascript" src="{{asset('bundles/servinowrestaurantdrawer/js/drawerExec.js')}}" ></script>
+{% endblock %}
+
+{% block content %}
+<h2>{{"Personalice el espacio de su restaurante" | trans}}</h2>
+
+<div id="drawerContainer">
+	<div id="drawerCanvasContainer" >
+		<canvas id="drawerCanvas" width="600" height="400" ></canvas>
+		<div id="drawerKnowledge" >{{ drawerKnowledge }}</div>
+		<div id="exampleObject" >
+			<p class="objectElement">
+				<span class="handler" >+</span>
+				<span class="removeHandler">-</span>
+				<input class="title" maxlength="8" type="text" />
+			</p>
+		</div>
+		<div id="exampleTable" >
+			<p class="objectElement tableElement">
+				<span class="handler" >+</span>
+				<span class="removeHandler" >-</span>
+				<span class="title" >tableID</span>
+			</p>
+		</div>
+	</div>
+
+	<div id="formDraggers" >
+		<div id="formDraggers_floor" class="option" >
+			<div class="object" >{{"Objecto" | trans}}</div>
+			<div class="description" >{{"Coloree la forma de su restaurante." | trans}}</div>
+		</div>
+		<div id="formDraggers_object" class="option" >
+			<div class="object">
+				<p class="square objectElement isGeneric">
+					<span class="handler" >+</span>
+					<input maxlength="8" class="title" type="text" value="{{"Ventana" | trans}}" />
+				</p>
+			</div>
+			<div class="description" >{{"Cree un componente" | trans}}</div>
+			<div class="configRight">
+				<label class="tall">
+					<span>{{"Alto" | trans}}:</span>
+					<input type="number" step="1" min="1" value="1" >
+				</label>
+				<label class="wide">
+					<span>{{"Ancho" | trans}}:</span>
+					<input type="number" step="1" min="1" value="1" >
+				</label>
+			</div>
+		</div>
+		<div id="formDraggers_table" class="option" >
+			<div class="object">
+				<p class="objectElement tableElement">
+					<span class="handler" >+</span>
+					<span class="title">{{"Mesa" | trans}}</span>
+				</p>
+			</div>
+			<div class="description" >{{"Cree una mesa" | trans}}</div>
+			<div class="configRight">
+				<label class="tall">
+					<span>{{"Alto" | trans}}:</span>
+					<input type="number" step="1" min="1" value="1" >
+				</label>
+				<label class="wide" >
+					<span>{{"Ancho" | trans}}:</span>
+					<input type="number" step="1" min="1" value="1" >
+				</label>
+			</div>
+			<div class="configBottom">
+				<span>{{"Comensales"}} </span>
+				<label class="min" >
+					<span>{{"mínimos" | trans}}:</span>
+					<input type="number" step="1" min="1" value="2" >
+				</label>
+				<label class="max" >
+					<span>{{"y máximos" | trans}}:</span>
+					<input type="number" step="1" min="1" value="4" >
+				</label>
+			</div>
+		</div>
+		<div>
+			<button id="confirmDraw">{{"Confirmar nueva organización" | trans}}</button>
+			<button id="cancelDraw" >{{"Cancelar" | trans}}</button>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

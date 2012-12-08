@@ -1,0 +1,190 @@
+/* 
+    Document   : drawer.css
+    Created on : 30-nov-2012, 15:48:01
+    Author     : bloodsucker
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+#drawerContainer{
+	overflow: hidden;
+	width: 1400px;
+	padding: 20px;
+	margin: 0 auto;
+}
+
+#drawerCanvasContainer{
+	float: left;
+	overflow: hidden;
+	width: 610px;
+	height: 410px;
+	position: relative;
+}
+
+#drawerCanvas {
+	width: 600px;
+	height: 400px;
+	position: relative;
+	top: 5px;
+	left: 5px;
+}
+
+#drawerCanvasContainer .floor {
+	position: absolute;
+	display: block;
+	background-color: #DCDCDC;
+	z-index: 1;
+}
+
+#drawerKnowledge, #exampleObject, #exampleTable{
+	display: none;
+}
+
+#formDraggers{
+	float: right;
+	width: 600px;
+	border: 1px solid black;
+	padding: 20px;
+}
+
+#formDraggers > div {
+	overflow: hidden;
+	border: 1px solid black;
+	margin: 10px 0;
+	padding: 5px;
+}
+#formDraggers > div:first-child{
+	margin-top: 0px;
+}
+#formDraggers > div:last-child{
+	margin-bottom: 0px;
+}
+
+#formDraggers > div .object {
+	display: block;
+	margin-right: 2%;
+	text-align: right;
+	width: 20%;
+	float: left;
+}
+#formDraggers > div .description {
+	display: block;
+	width: 50%;
+	float: left;
+}
+
+#formDraggers > div .configRight {
+	width: 28%;
+	float: left;
+	display: block;
+}
+#formDraggers > div .configRight label {
+	overflow: hidden;
+	display: block;
+}
+#formDraggers > div .configRight label span {
+	width: 50%;
+	display: block;
+	float:left;
+}
+#formDraggers > div .configRight label input {
+	width: 45%;
+	display: block;
+	float: right;
+}
+
+#formDraggers > div .configBottom{
+	clear: both;
+}
+
+#formDraggers > div .configBottom input {
+	width: 50px;
+}
+
+.objectElement{
+	display:table;
+	width:40px;
+	height: 40px;
+	background-color: #D0F5FF;
+	float: right;
+	position: absolute;
+	z-index: 3;
+}
+
+#formDraggers .objectElement{
+	position: relative;
+}
+
+.objectElement .title{
+	display: table-cell;
+	vertical-align: middle;
+	transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+	font-size: 0.5em;
+	text-align: center;
+	border: 0 none;
+	width: 40px;
+	height: 40px;
+	background: none;
+	color: black;
+	outline: none;
+}
+
+.objectElement.square .title {
+	transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+	z-index: 3;
+}
+
+.objectElement.wide .title {
+	transform: rotate(0deg);
+	-webkit-transform: rotate(0deg);
+}
+
+.objectElement.tall .title {
+	transform: rotate(-90deg);
+	-webkit-transform: rotate(-90deg);
+}
+
+.objectElement .handler{
+	position: absolute;
+	top: 0px;
+	left:0px;
+	background-color: #343434;
+	z-index: 5;
+	cursor: pointer;
+	line-height: 0.8em;
+	font-size: 0.8em;
+	width: 0.8em;
+	height: 0.8em;
+	text-align: center;
+}
+
+.objectElement.ui-draggable-dragging .handler {
+	cursor: move;
+}
+.objectElement .removeHandler {
+	display: none;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	background-color: #C21F00;
+	z-index: 5;
+	cursor: pointer;
+	line-height: 0.8em;
+	font-size: 0.8em;
+	width: 0.8em;
+	height: 0.8em;
+	text-align: center;
+}
+
+.objectElement:hover .removeHandler {
+	display: block;
+}
+
+#confirmDraw{
+	float: left;
+}
+#cancelDraw{
+	float: right;
+}
