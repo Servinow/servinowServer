@@ -5,7 +5,9 @@
     Description:
         Purpose of the stylesheet follows.
 */
-
+#central_movimientos_caja {
+	min-height: 530px !important;
+}
 #sidebar_left{
     position: relative;
     float: left;

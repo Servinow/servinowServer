@@ -8,10 +8,11 @@
 
 #nav_movimientos_caja_productos{
     position: relative;
-    float: left;
     background-color: #E0E0E0;
     width: 1300px;
-    height: 70px;
+    height: 80px;
+	padding-top: 10px;
+	padding-right: 5px;
 }
 
 #nav_movimientos_caja_productos_container{
@@ -20,11 +21,22 @@
 
 #central_movimientos_caja_productos{
     position: relative;
-    float: left;
     background-color: #F9F9F9;
     width: 1300px;
     min-height: 410px;
     height: auto;
+	text-align: left;
+	margin-left: 400px;
+}
+
+#productos_nav {
+	position: relative;
+	top: -71px;
+	float: right;
+}
+#productos_nav a {
+	float: right;
+	margin-top: 4px;
 }
 
 #titulo_movimientos_caja_productos{
@@ -90,6 +102,5 @@
     margin-left: 0;
 }
 .formulario_buscar{
-    float:left;
     margin-left: 25px;
 }

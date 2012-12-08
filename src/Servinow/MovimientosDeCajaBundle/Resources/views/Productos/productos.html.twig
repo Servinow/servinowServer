@@ -1,8 +1,8 @@
 {% extends 'ServinowMovimientosDeCajaBundle::Productos/base.html.twig' %}
 
 {%block central_movimientos_caja_productos%}
-
-<table id="topProductosCantidad" hidden="true">
+<h2>Productos por cantidad vendida</h2>
+<table id="topProductosCantidad">
     <thead>
         <tr>
             <th>Producto</th>
@@ -18,7 +18,11 @@
         {% endfor %}
     </tbody>
 </table>
-<table id="topProductosIngresos" hidden="true">
+<script>
+    $("#topProductosCantidad").createPieChart(490,300,380,150,100,'#fff');
+</script>
+<h2>Productos por ingresos generados</h2>
+<table id="topProductosIngresos">
     <thead>
         <tr>
             <th>Producto</th>
@@ -33,4 +37,8 @@
             </tr>
         {% endfor %}
     </tbody>
-</table>{%endblock%}
+</table>
+<script>
+    $("#topProductosIngresos").createPieChart(490,300,380,150,100,'#fff');
+</script>
+{%endblock%}

@@ -16,10 +16,14 @@
         {% for pedido in dia_pedidos %}
             <tr>
                 <td>{{pedido.fecha}}</td>
-                <td>{{pedido.pedidos}}</td>
+                <td>{{pedido.pedidos}} pedidos</td>
             </tr>
         {% endfor %}
     </tbody>
-</table>​
-<h1>Media Ingreso por pedido: {{mediaIngresosPedido}}</h1>
+</table>
+<h2>Pedidos por dia</h2>
+<script>
+    $("#pedidos").createHistogram(600,400);
+</script>
+<h1>Media Ingreso por pedido: {{mediaIngresosPedido}}&euro;</h1>
 {% endblock %}

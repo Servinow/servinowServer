@@ -1,7 +1,7 @@
 {% extends 'ServinowMovimientosDeCajaBundle::Movimientos/base.html.twig' %}
 
 {% block central_movimientos_caja_movimientos %}
-<table id="movimientos">
+<table id="movimientos" width="100%" class="display">
     <thead>
         <tr>
             <th>Pedido</th>
@@ -18,11 +18,29 @@
                 <td>{{pedido.mesa}}</td>
                 <td>{{pedido.productos}}</td>
                 <td>{{pedido.metodoPago}}</td>
-                <td>{{pedido.total}}</td>
+                <td>{{pedido.total|number_format(2)}}&euro;</td>
             </tr>
         {% endfor %}
     </tbody>
-</table>​
-
-<h1>Balance: {{balance.total}}</h1>
+</table>
+<script>
+$(document).ready(function() {
+    $('#movimientos').dataTable({
+        "oLanguage": {
+            "sLengthMenu": "Muestra _MENU_ elementos por pagina",
+            "sZeroRecords": "No hay movimientos",
+            "sInfo": "Mostrando desde _START_ hasta _END_ de _TOTAL_ elementos",
+            "sInfoEmpty": "",
+            "sInfoFiltered": "(filtrado de _MAX_ totales)",
+            "oPaginate": {
+                "sPrevious": "Anterior",
+                "sNext": "Siguiente",
+                "sFirst": "Primera"
+            },
+            "sSearch": "Buscar"
+        }
+    });
+});
+</script>
+<h1>Balance: {{balance.total|number_format(2)}}&euro;</h1>
 {% endblock %}

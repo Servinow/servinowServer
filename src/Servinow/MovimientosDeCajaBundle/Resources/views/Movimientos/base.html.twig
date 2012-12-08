@@ -4,11 +4,13 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('bundles/servinowmovimientosdecaja/css/base.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('bundles/servinowmovimientosdecaja/css/movimientos.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('bundles/servinowmovimientosdecaja/css/buttons.css') }}">
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />    
+    <link rel="stylesheet" type="text/css" href="{{asset('bundles/servinowmovimientosdecaja/css/movimientos_table.css')}}" />
 {% endblock %}
     
 {% block javascripts %}
     <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script src="{{asset('bundles/servinowmovimientosdecaja/js/jquery.dataTables.min.js')}}"></script>
     <script>
         $(function() {
             $( "#datepicker_fecha_dia" ).datepicker({

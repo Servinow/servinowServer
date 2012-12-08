@@ -7,8 +7,10 @@
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
 {% endblock %}
     
-{% block javascripts_end_body %}
-    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+{% block javascripts %}
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>    
+    <script src="https://raw.github.com/DmitryBaranovskiy/raphael/master/raphael-min.js"></script>
+    <script src="{{ asset('bundles/servinowmovimientosdecaja/js/caja.js') }}"></script>
     <script>
         $(function() {
             $( "#datepicker_fecha_inicio" ).datepicker({
@@ -31,8 +33,6 @@
             });
         });
     </script>
-    <script src="https://raw.github.com/DmitryBaranovskiy/raphael/master/raphael-min.js"></script>
-    <script src="{{ asset('bundles/servinowmovimientosdecaja/js/productos.js') }}"></script>
 {% endblock %}
 
 {% block class_li_productos %} class="selected" {%endblock%}
@@ -51,19 +51,20 @@
                 <input type="text" name="fecha_fin" id="datepicker_fecha_fin" value="{{fecha_fin}}"/>
                 <button type="submit" class="btn">Buscar</button>
             </form>
-            
-            <form class="formulario_buscar">
-                <input type="text" name="producto" id="buscar_producto" 
-                       placeholder="{%trans%}enter.product{%endtrans%}">
-                <button type="submit" class="btn button_buscar"
-                <button type="submit" class="">{%trans%}search{%endtrans%}</button>
-            </form>
-            <a href="{{path('servinow_movimientos_de_caja_productos', 
-                {'restaurantID': restaurantID})}}"
-               class="btn a_button"
-            >
-                {%trans%}top10{%endtrans%}
-            </a>
+    </div>
+     <div id="productos_nav">
+                <form class="formulario_buscar">
+                    <input type="text" name="producto" id="buscar_producto" 
+                        placeholder="{%trans%}enter.product{%endtrans%}">
+                    <button type="submit" class="btn button_buscar"
+                    <button type="submit" class="">{%trans%}search{%endtrans%}</button>
+                </form>
+                <a href="{{path('servinow_movimientos_de_caja_productos', 
+                    {'restaurantID': restaurantID})}}"
+                class="btn a_button"
+                >
+                    {%trans%}top10{%endtrans%}
+        </a>
     </div>
 </div>
 

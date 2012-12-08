@@ -36,16 +36,16 @@ class GeneralController extends Controller
         $pedidos = $repository->findPedidosIngresos($fecha_inicio, $fecha_fin, $restaurantID);
         
         $dia_pedidos = array();
-        $j=0;
-        for($i=$fecha_inicio; $i <= $fecha_fin; $i++){
-            $dia_pedidos[$i-$fecha_inicio]['fecha'] = $i;
-            if($j < count($pedidos) && $pedidos[$j]['fecha'] == $i && $pedidos[$j]['fecha'] != null){
-                $dia_pedidos[$i-$fecha_inicio]['total'] = $pedidos[$j]['total'];
-                $j++;
-            }
-            else{
-                $dia_pedidos[$i-$fecha_inicio]['total'] = 0;
-            }
+        
+        //Date madness starts here...
+        $fecha = $fecha_inicio;
+        while(strtotime($fecha) <= strtotime($fecha_fin)) {
+            $dia_pedidos[$fecha]['fecha'] = date("d-m-Y", strtotime($fecha));
+            $dia_pedidos[$fecha]['total'] = 0;
+            $fecha = date("Ymd", strtotime("+1 day", strtotime($fecha)));
+        }
+        for($j=0, $sizePedidos = count($pedidos); $j < $sizePedidos; $j++) {
+            $dia_pedidos[$pedidos[$j]['fecha']]['total'] += $pedidos[$j]['total'];
         }
         
         return $this->render('ServinowMovimientosDeCajaBundle:General:ingresos.html.twig',
@@ -121,16 +121,16 @@ class GeneralController extends Controller
         $pedidos = $repository->findPedidosCantidad($fecha_inicio, $fecha_fin, $restaurantID);
         
         $dia_pedidos = array();
-        $j=0;
-        for($i=$fecha_inicio; $i <= $fecha_fin; $i++){
-            $dia_pedidos[$i-$fecha_inicio]['fecha'] = $i;
-            if($j < count($pedidos) && $pedidos[$j]['fecha'] == $i){
-                $dia_pedidos[$i-$fecha_inicio]['pedidos'] = $pedidos[$j]['1'];
-                $j++;
-            }
-            else{
-                $dia_pedidos[$i-$fecha_inicio]['pedidos'] = 0;
-            }
+        
+        //Date madness starts here...
+        $fecha = $fecha_inicio;
+        while(strtotime($fecha) <= strtotime($fecha_fin)) {
+            $dia_pedidos[$fecha]['fecha'] = date("d-m-Y", strtotime($fecha));
+            $dia_pedidos[$fecha]['pedidos'] = 0;
+            $fecha = date("Ymd", strtotime("+1 day", strtotime($fecha)));
+        }
+        for($j=0, $sizePedidos = count($pedidos); $j < $sizePedidos; $j++) {
+            $dia_pedidos[$pedidos[$j]['fecha']]['pedidos'] += $pedidos[$j]['1'];
         }
         
         $total = $repository->totalPedidosCantidadIngresos($fecha_inicio, $fecha_fin, $restaurantID);
@@ -142,7 +142,7 @@ class GeneralController extends Controller
                     'fecha_inicio'=> $fecha_inicio,
                     'fecha_fin' => $fecha_fin,
                     'dia_pedidos' => $dia_pedidos,
-                    'mediaIngresosPedido' => $mediaIngresosPedido));
+                    'mediaIngresosPedido' => number_format($mediaIngresosPedido,2)));
     }
     
     public function mesasAction($restaurantID)
