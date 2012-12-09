@@ -5,3 +5,7 @@ servinow_restaurant_drawer_homepage:
 servinow_restaurant_drawer_homepage_api_addtable:
     pattern:  /api/addTable/
     defaults: { _controller: ServinowRestaurantDrawerBundle:Api:addTable }
+    
+servinow_restaurant_drawer_homepage_api_savedrawer:
+    pattern:  /api/saveDrawer/
+    defaults: { _controller: ServinowRestaurantDrawerBundle:Api:saveDrawer }

@@ -1,0 +1,26 @@
+Servinow\RestaurantDrawerBundle\Entity\Drawer:
+  type: entity
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  oneToMany:
+    simpleObjects:
+      targetEntity: Servinow\RestaurantDrawerBundle\Entity\SimpleObject
+      mappedBy: _drawer
+      cascade: ["persist"]
+    tableObjects:
+      targetEntity: Servinow\RestaurantDrawerBundle\Entity\TableObject
+      mappedBy: _drawer
+      cascade: ["persist"]
+    floors:
+      targetEntity: Servinow\RestaurantDrawerBundle\Entity\FloorObject
+      mappedBy: _drawer
+      cascade: ["persist"]
+  oneToOne:
+    _restaurant:
+      targetEntity: Servinow\EntitiesBundle\Entity\Restaurante
+      joinColumn:
+        name: restaurante_id
+        referencedColumnName: id
+        onDelete: cascade

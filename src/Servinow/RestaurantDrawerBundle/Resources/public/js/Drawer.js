@@ -68,6 +68,7 @@ if(!_servinow)
 		this.sendOnClick = function(el){
 			el.click(function(e){
 				console.log(knowledge);
+				drawerKnowledge.saveDrawer(knowledge);
 			});
 		}
 		
@@ -317,6 +318,10 @@ if(!_servinow)
 							left: def.x*colWidth +5
 						});
 				}
+			});
+			
+			newObject.find('input.title').change(function(){
+				def.name = $(this).val();
 			});
 			
 			newObject.tooltip({

@@ -1,0 +1,25 @@
+Servinow\RestaurantDrawerBundle\Entity\FloorObject:
+  type: entity
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    p:
+      type: integer
+    used:
+      type: boolean
+  manyToOne:
+    _restaurant:
+      targetEntity: Servinow\EntitiesBundle\Entity\Restaurante
+      joinColumn:
+        name: restaurante_id
+        referencedColumnName: id
+        onDelete: cascade
+    _drawer:
+      targetEntity: Servinow\RestaurantDrawerBundle\Entity\Drawer
+      inversedBy: simpleObjects
+      joinColumn:
+        name: drawer_id
+        referencedColumnName: id
+        onDelete: cascade

@@ -4,38 +4,60 @@ namespace Servinow\RestaurantDrawerBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+use Servinow\EntitiesBundle\Entity\Mesa;
+use Servinow\RestaurantDrawerBundle\Entity\Drawer;
+use Servinow\RestaurantDrawerBundle\Entity\FloorObject;
+use Servinow\RestaurantDrawerBundle\Entity\SimpleObject;
+use Servinow\RestaurantDrawerBundle\Entity\TableObject;
+
 class DrawerController extends Controller {
 
 	public function indexAction($restaurantID) {
-		//TODO
+		$em = $this->getDoctrine()->getEntityManager();
+		$drawer = $em->getRepository('ServinowRestaurantDrawerBundle:Drawer')->findOneBy(array(
+			'_restaurant'	=>	$restaurantID
+		));
 		
 		$drawerKnowledge = array(
-			'objects' => array(
-				array(
-					'id' => 1,
-					'x' => 0,
-					'y' => 0,
-					'wide' => 1,
-					'tall' => 1,
-					'name' => 'portón'
-				),
-				array(
-					'id' => 2,
-					'x' => 7,
-					'y' => 4,
-					'wide' => 2,
-					'tall' => 1,
-					'name' => 'ventana'
-				),
-				array(
-					'id' => 3,
-					'x' => 0,
-					'y' => 3,
-					'wide' => 1,
-					'tall' => 4,
-					'name' => 'barr2a'
-				),
-			),
+			'objects' => array(),
+			'tables' => array(),
+			'floor'	=> array()
+		);
+		
+		if ( $drawer ) {
+			$sobjects = $drawer->getSimpleObjects();
+			foreach($sobjects as $sobject){
+				$drawerKnowledge['objects'][] = array(
+					'id' => $sobject->getId(),
+					'x' => $sobject->getX(),
+					'y' => $sobject->getY(),
+					'wide' => $sobject->getWide(),
+					'tall' => $sobject->getTall(),
+					'name' => $sobject->getName()
+				);
+			}
+			
+			$tables = $drawer->getTableObjects();
+			foreach($tables as $table){
+				$tableref = $table->getTable();
+				$drawerKnowledge['tables'][] = array(
+					'id' => $tableref->getId(),
+					'x' => $table->getX(),
+					'y' => $table->getY(),
+					'wide' => $table->getWide(),
+					'tall' => $table->getTall(),
+					'min' => $tableref->getMin(),
+					'max' => $tableref->getMax()
+				);
+			}
+			
+			$floors = $drawer->getFloors();
+			foreach($floors as $floor){
+				$drawerKnowledge['floor'][$floor->getP()] = $floor->getUsed();
+			}
+		}
+		
+		/*$drawerKnowledge = array(
 			'tables' => array(
 				array(
 					'id' => 1,
@@ -72,7 +94,7 @@ class DrawerController extends Controller {
 				51 => true,
 				30 => false
 			)
-		);
+		);*/
 		
 		return $this->render('ServinowRestaurantDrawerBundle:Drawer:index.html.twig'
 						, array('restaurantID' => $restaurantID,

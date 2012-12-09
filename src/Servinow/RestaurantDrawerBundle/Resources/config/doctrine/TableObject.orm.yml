@@ -1,0 +1,36 @@
+Servinow\RestaurantDrawerBundle\Entity\TableObject:
+  type: entity
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    x:
+      type: integer
+    y:
+      type: integer
+    wide:
+      type: integer
+    tall:
+      type: integer
+  manyToOne:
+    _restaurant:
+      targetEntity: Servinow\EntitiesBundle\Entity\Restaurante
+      joinColumn:
+        name: restaurante_id
+        referencedColumnName: id
+        onDelete: cascade
+    _drawer:
+      targetEntity: Servinow\RestaurantDrawerBundle\Entity\Drawer
+      inversedBy: simpleObjects
+      joinColumn:
+        name: drawer_id
+        referencedColumnName: id
+        onDelete: cascade
+  oneToOne:
+    _table:
+      targetEntity: Servinow\EntitiesBundle\Entity\Mesa
+      joinColumn:
+        name: mesa_id
+        referencedColumnName: id
+        onDelete: cascade
