@@ -8,7 +8,13 @@
 
 a:focus {outline: none;}
 
-#container {}
+html{
+	background-color: #333;
+}
+
+#container {
+	background-color: white;
+}
 #container > header {
 	background-color: #333;
 	box-shadow: 0 1px 3px #333333;
@@ -75,6 +81,7 @@ a:focus {outline: none;}
 	font-size: 95%;
 	background-color: #333;
 	box-shadow: 0 1px 3px #333333;
+	z-index: 100;
 }
 
 #navigation .menu li:hover .submenu, #navigation .submenu.show {
@@ -109,4 +116,6 @@ a:focus {outline: none;}
 	text-align: center;
 	background-color: #333;
 	box-shadow: 0 -1px 3px #333333;
+	padding: 15px 0;
+	margin-top: 15px;
 }
