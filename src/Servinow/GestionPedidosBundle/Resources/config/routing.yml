@@ -1,0 +1,9 @@
+servinow_gestion_pedidos_homepage:
+    pattern:  /
+    defaults: { _controller: ServinowGestionPedidosBundle:Default:index }
+servinow_gestion_pedidos_api_pedidos:
+    pattern:  /API/pedidos/
+    defaults: { _controller: ServinowGestionPedidosBundle:API:pedidos }
+servinow_gestion_pedidos_api_update_estado_lineapedido:
+    pattern:  /API/update/estado/lineapedido
+    defaults: { _controller: ServinowGestionPedidosBundle:API:updateEstadoLineaPedido }

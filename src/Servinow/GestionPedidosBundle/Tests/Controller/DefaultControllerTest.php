@@ -1,6 +1,6 @@
 <?php
 
-namespace Servinow\PlatosBundle\Tests\Controller;
+namespace Servinow\GestionPedidosBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

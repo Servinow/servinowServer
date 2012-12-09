@@ -1,0 +1,11 @@
+<tr id="producto<%=lineaPedido.id%>" class="lineaPedido">
+	<td><span><%=lineaPedido.producto.nombre%></span></td>
+        <td>
+            <span><%=lineaPedido.cantidad%></span>
+	</td>
+	<% if(!finalState) { %>
+	<td class="accionesProducto">
+            <button class="nextState">S</button>
+	</td>
+	<% } %>
+</tr>

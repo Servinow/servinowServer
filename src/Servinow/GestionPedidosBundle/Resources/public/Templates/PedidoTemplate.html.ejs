@@ -1,0 +1,17 @@
+<div id="pedido<%=pedido.id%>" class="pedido">
+	<div class="pedidoTitulo">
+		<span>Pedido #<%=pedido.id%></span>
+	</div>
+	<div class="progressbar">
+            <div class="progress"></div>
+	</div>
+	<table class="listaProductos">
+		<tr>
+			<td><span>Plato</span></td>
+            <td><span>Ración</span></td>
+			<% if(!finalState) { %>
+				<td><span>Acción</span></td>
+			<% } %>
+		</tr>
+	</table>
+</div>
