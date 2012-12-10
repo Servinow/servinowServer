@@ -1,0 +1,7 @@
+servinow_factura_homepage:
+    pattern:  /
+    defaults: { _controller: ServinowFacturaBundle:Restaurante:new }
+
+servinow_factura_success:
+    pattern:  /success
+    defaults: { _controller: ServinowFacturaBundle:Restaurante:success}

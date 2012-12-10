@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new Servinow\RestaurantDrawerBundle\ServinowRestaurantDrawerBundle(),
             new Servinow\MovimientosDeCajaBundle\ServinowMovimientosDeCajaBundle(),
             new Servinow\EntitiesBundle\ServinowEntitiesBundle(),
+            new Servinow\FacturaBundle\ServinowFacturaBundle(),
             new Servinow\PlatosBundle\ServinowPlatosBundle(),
         );
 
