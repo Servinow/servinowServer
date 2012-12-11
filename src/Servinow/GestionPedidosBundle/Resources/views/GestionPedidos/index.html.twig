@@ -30,6 +30,9 @@
 	<script src="{{ asset('bundles/servinowgestionpedidos/js/Manejador/PedidoManager.js') }}" type="text/javascript"></script>
 	<script src="{{ asset('bundles/servinowgestionpedidos/js/Manejador/PlatoManager.js') }}" type="text/javascript"></script>
         <script src="{{ asset('bundles/servinowgestionpedidos/js/Manejador/EventManager.js') }}" type="text/javascript"></script>
+        <script type="text/javascript">
+            ep.panelActivo = {{ tipoEmpleado }};
+        </script>
         {% endblock %}
 	{% block title %}Gestión de estado de pedidos{% endblock %}
         

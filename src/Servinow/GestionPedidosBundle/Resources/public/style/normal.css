@@ -1,47 +1,49 @@
 .panel {
-    margin: 10px;
+    margin: 25px 0;
     overflow: hidden;
-    
+
 }
 .estado {
     float: left;
-	width:250px;
+    width:250px;
     overflow: hidden;
 }
 
 .tituloPanelEstado {
-	text-align: center;
-	overflow: hidden;
-	height: 25px;
-	
+    background-color: #DDD;
+    text-align: center;
+    overflow: hidden;
+    padding: 10px;
+
 }
 
 .tituloEstadoDiv {
     display: inline;
-    
+
 }
 
 .botonesAgrupacionDiv {
     display: inline;
-    
+
 }
 
 .contentDiv{
     padding: 5px 0;
     clear:both;
+    background-color: #EEE;
 }
 
 .pedido {
     padding: 5px;
-	width: 230px;
+    width: 230px;
     border: 1px solid #EEE;
     background-image:url('../../../../web/bundles/servinowgestionpedidos/img/greygradient.jpg');
-    
+    margin: 0 auto;
 }
 
 .pedidoTitulo {
     padding: 3px;
-    
+
 }
 
 .pedidoTitulo > span {
@@ -63,12 +65,12 @@
 
 .listaProductos > tbody > tr:first-child > td > span {
     font-size: 12px;
-    
+
 }
 
 .listaProductos > tbody > tr > td > span {
     font-size: 11px;
-    
+
 }
 
 .listaProductos > tbody > tr > td {
@@ -77,16 +79,32 @@
 
 .listaProductos > tbody > tr > td {
     padding: 2px;
+    text-align: center;
 }
 
 .progressbar {
     height: 25px;
     background-color: #FFF;
-    
+    border: 1px solid #FAFAFA;
+
+}
+
+.nextState{
+    border: none;
+    background: transparent;
+    cursor: pointer;
 }
 
 .progressbar .progress {
-	 height: 100%;
-	 width: 0px;
-	 background-color:#00aa00;
+    height: 100%;
+    width: 0px;
+    background-color:#00aa00;
+}
+
+.progressbar .progress .percent {
+    display: block;
+    font-size: 11px;
+    line-height: 25px;
+    text-align: center;
+    width: 230px;
 }

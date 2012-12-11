@@ -1,9 +1,9 @@
 (function(ep){
-	ep.Entidad.Plato = function(nombre){
-		this.id = null;
+    ep.Entidad.Plato = function(nombre){
+	this.id = null;
 
-		this.nombre = nombre;
+	this.nombre = nombre;
 
-		this.cantidad = null;
-	}
+	this.cantidad = null;
+    }
 })(ep);

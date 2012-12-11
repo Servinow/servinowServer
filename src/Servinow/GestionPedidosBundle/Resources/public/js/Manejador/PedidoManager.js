@@ -19,7 +19,7 @@
 		}
 		this.load = function(onSuccess){
 			$.ajax({
-				url: 'API/pedidos/',
+				url: '../API/pedidos/',
 				type: "GET",
 				dataType: "json",
 				success: onSuccess

@@ -84,15 +84,29 @@
 			}
 		}
 		this.drawPedido = function(panel, pedido){
+                        var panelElementGraphic = this.createPanelCocinero(panel);
+                        var estadoMin = pedido.lineasPedido[0].estado.tipo;
+                        var estadoMax = 0;
 			for(var j = 0; j < pedido.lineasPedido.length; ++j){
-				var panelElementGraphic = this.createPanelCocinero(panel);
 				var lineaPedido = pedido.lineasPedido[j];
 				var estado = lineaPedido.estado;
+                                
 				if(panelElementGraphic.hasEstado(estado)){
 					this.drawPedidoEnEstado(panel, pedido, estado);
 					this.drawLineaPedido(panel, pedido, lineaPedido);
+                                        
+                                        if(estadoMin > estado.tipo) estadoMin = estado.tipo;
+                                        if(estadoMax < estado.tipo) estadoMax = estado.tipo;
 				}
 			}
+                        
+                        for(var state = estadoMin+1; state < estadoMax; ++state){
+                            estado = panel.estados[state];
+                            if(panelElementGraphic.hasEstado(estado)){
+				this.drawPedidoEnEstado(panel, pedido, estado);                                        
+                            }
+                            
+                        }
 		}
 		this.drawPedidoEnEstado = function(panel, pedido, estado){
 			var panelElementGraphic = this.createPanelCocinero(panel);
@@ -100,7 +114,9 @@
 			
 			var pedidoElementGraphic = this.createPedidoEnEstado(estado, pedido, estadoElementGraphic.finalState);
 
-			estadoElementGraphic.addPedido(pedidoElementGraphic);      
+			if(!estadoElementGraphic.hasPedido(pedido)){
+                            estadoElementGraphic.addPedido(pedidoElementGraphic); 
+			}     
 		}
 		this.drawLineaPedido = function(panel, pedido, lineaPedido){
 			var panelElementGraphic = this.createPanelCocinero(panel);
@@ -130,15 +146,11 @@
 			if(panelElementGraphic.hasEstado(estadoSiguiente)){
 				var estadoNuevoElementGraphic = panelElementGraphic.getEstado(estadoSiguiente);
 				this.drawPedidoEnEstado(panel, pedido, estadoSiguiente);
-				if(estadoNuevoElementGraphic.finalState){
-					this.redrawLineaPedido(panel, pedido, lineaPedido);
-				} else {
-					var pedidoNuevoEstadoElementGraphic = estadoNuevoElementGraphic.getPedido(pedido);
+				var pedidoNuevoEstadoElementGraphic = estadoNuevoElementGraphic.getPedido(pedido);
 				
-					estadoNuevoElementGraphic.addLineaPedido(pedidoNuevoEstadoElementGraphic, productoElementGraphic);
+				estadoNuevoElementGraphic.addLineaPedidoFromEstado(pedidoNuevoEstadoElementGraphic, productoElementGraphic);
 				
-					productoElementGraphic.enableNextStateButtonLineaPedido();
-				}
+				productoElementGraphic.enableNextStateButtonLineaPedido();
 			}
 		}
 		this.disableNextStateButtonLineaPedido = function(panel, pedido, lineaPedido){

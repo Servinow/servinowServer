@@ -1,7 +1,7 @@
 (function(ep){
-	ep.Entidad.Panel = function(tipo, estados){
-		this.tipo = tipo;
+    ep.Entidad.Panel = function(tipo, estados){
+	this.tipo = tipo;
 		
-		this.estados = estados;
-	}
+	this.estados = estados;
+    }
 })(ep);

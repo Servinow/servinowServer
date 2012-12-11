@@ -19,7 +19,7 @@
 				<h1><span>Servinow</span></h1>
 				<nav id="navigation" >
 					<ul class="menu" >
-						<li><a href="#TODO" >{{ "Mis pedidos"  | trans }}</a></li>
+						<li><a href="{{ path('servinow_gestion_pedidos_homepage', {'restaurantID': restaurantID, 'tipoEmpleado' : 'cocinero' }) }}" >{{ "Mis pedidos"  | trans }}</a></li>
 						<li>
 							<a href="#TODO" >{{ "Restaurante"  | trans }}</a>
 							<ul class="submenu">

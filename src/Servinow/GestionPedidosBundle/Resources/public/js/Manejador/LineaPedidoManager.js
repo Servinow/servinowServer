@@ -16,7 +16,7 @@
 		}
 		this.saveUpdateEstado = function(lineaPedido, estado, onSuccess){
 			$.ajax({
-				url: 'API/update/estado/lineapedido',
+				url: '../API/update/estado/lineapedido',
 				type: "POST",
 				data: {
 					id: lineaPedido.id,

@@ -1,7 +1,7 @@
 (function(ep){
-	ep.Entidad.Pedido = function(){
-		this.id = null;
+    ep.Entidad.Pedido = function(){
+	this.id = null;
 
-		this.lineasPedido = [];
-	}
+	this.lineasPedido = [];
+    }
 })(ep);

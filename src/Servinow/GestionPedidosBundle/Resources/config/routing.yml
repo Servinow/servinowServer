@@ -1,5 +1,5 @@
 servinow_gestion_pedidos_homepage:
-    pattern:  /
+    pattern:  /{tipoEmpleado}/
     defaults: { _controller: ServinowGestionPedidosBundle:Default:index }
 servinow_gestion_pedidos_api_pedidos:
     pattern:  /API/pedidos/
