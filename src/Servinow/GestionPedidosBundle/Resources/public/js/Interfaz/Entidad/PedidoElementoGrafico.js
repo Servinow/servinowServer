@@ -58,9 +58,9 @@
 	    var percent = (!this.finalState)
 	    ? this.lineasPedidoNextStates/this.lineasPedidoTotal
 	    : this.lineasPedidoCont/this.lineasPedidoTotal;
-	    var percentText = (percent*100)+"%";
-	    this.progressElement.css("width", percentText);
-	    this.percentElement.text(percentText);
+	    var percentText = (percent*100).toFixed(2);
+	    this.progressElement.css("width", percentText+"%");
+	    this.percentElement.text(percentText+" %");
 	    
 	}
 	this.getLineaPedido = function(lineaPedido){
