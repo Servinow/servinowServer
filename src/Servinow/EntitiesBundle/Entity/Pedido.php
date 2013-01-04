@@ -45,7 +45,7 @@ class Pedido
     /**
      * @var boolean $metodoPago
      *
-     * @ORM\Column(name="metodo_pago", type="string", length=255)
+     * @ORM\Column(name="metodo_pago", type="string", length=255, nullable=true)
      */
     private $metodoPago;
 

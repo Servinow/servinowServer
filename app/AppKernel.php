@@ -26,6 +26,7 @@ class AppKernel extends Kernel
             new Servinow\EntitiesBundle\ServinowEntitiesBundle(),
             new Servinow\FacturaBundle\ServinowFacturaBundle(),
             new Servinow\PlatosBundle\ServinowPlatosBundle(),
+            new Servinow\ApiBundle\ServinowApiBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

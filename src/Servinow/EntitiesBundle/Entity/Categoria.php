@@ -17,7 +17,7 @@ class Categoria
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
@@ -40,6 +40,12 @@ class Categoria
      * @ORM\JoinTable(name="categorias_productos")
      */
     private $productos;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Restaurante", inversedBy="categorias")
+     * @ORM\JoinColumn(name="restaurante_id", referencedColumnName="id")
+     */
+    private $restaurante;
 
     
     public function __construct() {
@@ -133,5 +139,28 @@ class Categoria
     public function getProductos()
     {
         return $this->productos;
+    }
+
+    /**
+     * Set restaurante
+     *
+     * @param Servinow\EntitiesBundle\Entity\Restaurante $restaurante
+     * @return Categoria
+     */
+    public function setRestaurante(\Servinow\EntitiesBundle\Entity\Restaurante $restaurante = null)
+    {
+        $this->restaurante = $restaurante;
+    
+        return $this;
+    }
+
+    /**
+     * Get restaurante
+     *
+     * @return Servinow\EntitiesBundle\Entity\Restaurante 
+     */
+    public function getRestaurante()
+    {
+        return $this->restaurante;
     }
 }

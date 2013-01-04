@@ -6,7 +6,7 @@
 
 {% block central_factura %}
 <div id="div_formulario_factura">
-    <form id="formulario_factura" action="{{ path('servinow_navigation_homepage', {'restaurantID': restaurantID}) }}" 
+    <form id="formulario_factura" action="{{ path('servinow_factura_homepage', {'restaurantID': restaurantID}) }}" 
               method="post" {{ form_enctype(form) }}>
             {{ form_errors(form) }}
 

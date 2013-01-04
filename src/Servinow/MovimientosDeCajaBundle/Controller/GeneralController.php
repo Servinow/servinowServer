@@ -135,7 +135,14 @@ class GeneralController extends Controller
         
         $total = $repository->totalPedidosCantidadIngresos($fecha_inicio, $fecha_fin, $restaurantID);
         
-        $mediaIngresosPedido = $total['ingresos'] / $total['pedidos'];
+        if($total['pedidos'] != 0)
+        {
+            $mediaIngresosPedido = $total['ingresos'] / $total['pedidos'];
+        }
+        else
+        {   
+            $mediaIngresosPedido = 0;
+        }
         
         return $this->render('ServinowMovimientosDeCajaBundle:General:pedidos.html.twig',
                 array('restaurantID' =>$restaurantID,

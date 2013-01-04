@@ -16,7 +16,6 @@ class LineaPedido
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -36,6 +35,7 @@ class LineaPedido
     
     /**
      * @ORM\ManyToOne(targetEntity="Pedido", inversedBy="lineasPedido")
+     * @ORM\Id
      * @ORM\JoinColumn(name="pedido_id", referencedColumnName="id")
      */
     private $pedido;
@@ -147,5 +147,18 @@ class LineaPedido
     public function getProducto()
     {
         return $this->producto;
+    }
+
+    /**
+     * Set id
+     *
+     * @param integer $id
+     * @return LineaPedido
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    
+        return $this;
     }
 }

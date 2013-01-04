@@ -1,9 +1,11 @@
 <?php
 
-umask(0000);
-
 use Symfony\Component\ClassLoader\ApcClassLoader;
 use Symfony\Component\HttpFoundation\Request;
+
+umask(0000);
+
+date_default_timezone_set('UTC');
 
 $loader = require_once __DIR__.'/../app/bootstrap.php.cache';
 

@@ -133,12 +133,18 @@ class Restaurante
      * @ORM\OneToMany(targetEntity="Mesa", mappedBy="restaurante")
      */
     private $mesas;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Categoria", mappedBy="restaurante")
+     */
+    private $categorias;
 
     
     public function __construct() {
         $this->pedidos = new \Doctrine\Common\Collections\ArrayCollection();
         $this->productos = new \Doctrine\Common\Collections\ArrayCollection();
         $this->mesas = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->categorias = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -570,5 +576,38 @@ class Restaurante
     public function getNIFTitular()
     {
         return $this->NIFTitular;
+    }
+
+    /**
+     * Add categorias
+     *
+     * @param Servinow\EntitiesBundle\Entity\Categoria $categorias
+     * @return Restaurante
+     */
+    public function addCategoria(\Servinow\EntitiesBundle\Entity\Categoria $categorias)
+    {
+        $this->categorias[] = $categorias;
+    
+        return $this;
+    }
+
+    /**
+     * Remove categorias
+     *
+     * @param Servinow\EntitiesBundle\Entity\Categoria $categorias
+     */
+    public function removeCategoria(\Servinow\EntitiesBundle\Entity\Categoria $categorias)
+    {
+        $this->categorias->removeElement($categorias);
+    }
+
+    /**
+     * Get categorias
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getCategorias()
+    {
+        return $this->categorias;
     }
 }
