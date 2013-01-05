@@ -62,18 +62,18 @@
 			
 	    for(var i = 0; i < pedido.lineasPedido.length; ++i){
 		var lineaPedido = pedido.lineasPedido[i];
-		var lineaPedidoObj = this.addLineaPedido(lineaPedido);
+		var lineaPedidoObj = this.addLineaPedido(lineaPedido, pedido.id);
 		pedidoManager.addLineaPedido(pedidoObj, lineaPedidoObj);
 	    }
 			
 	    return pedidoObj; 
 	}
-	this.addLineaPedido = function(lineaPedido){
+	this.addLineaPedido = function(lineaPedido, pedidoId){
 	    var lineaPedidoManager = new ep.Manejador.LineaPedidoManager();
 			
 	    var producto = this.addProducto(lineaPedido.producto);
 	    var estado = this.addEstado(lineaPedido.estado);
-	    var lineaPedidoObj = lineaPedidoManager.add(lineaPedido.id, producto, lineaPedido.cantidad, estado);
+	    var lineaPedidoObj = lineaPedidoManager.add(lineaPedido.id, pedidoId, producto, lineaPedido.cantidad, estado);
 			
 	    return lineaPedidoObj;
 	}

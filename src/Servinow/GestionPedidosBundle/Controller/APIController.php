@@ -70,6 +70,7 @@ class APIController extends Controller {
 	    for ($j = 0; $j < count($lineasPedido); ++$j) {
 		$lineaPedido = array();
 		$lineaPedido['id'] = $lineasPedido[$j]->getId();
+                $lineaPedido['pedido'] = $pedido['id'];
 		$lineaPedido['cantidad'] = $lineasPedido[$j]->getCantidad();
 		$lineaPedido['estado'] = $this->stateStrToInt($lineasPedido[$j]->getEstado());
 
@@ -94,9 +95,12 @@ class APIController extends Controller {
 	$peticion = $this->getRequest();
 
 	$idLineaPedido = $peticion->request->get("id");
+        $pedidoIdOnline = $peticion->request->get("pedido");
 	$estadoLineaPedido = $peticion->request->get("estado");
 
-	$lineaPedido = $em->getRepository('ServinowEntitiesBundle:LineaPedido')->find($idLineaPedido);
+        $lineaPedido = $em->getRepository('ServinowEntitiesBundle:LineaPedido')
+                    ->findOneBy(array('id'=> $idLineaPedido, 'pedido' => $pedidoIdOnline));
+	//$lineaPedido = $em->getRepository('ServinowEntitiesBundle:LineaPedido')->find($idLineaPedido);
 	$lineaPedido->setEstado($this->stateIntToStr($estadoLineaPedido));
 	$em->persist($lineaPedido);
 	$em->flush();
