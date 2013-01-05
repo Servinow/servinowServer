@@ -47,6 +47,16 @@
 			}
 			return productoElementGraphic;
 		}
+		this.createProductoAgrupado = function(panel, lineaPedido, finalState){
+			var productoAgrupadoElementGraphic = elements['estado'+lineaPedido.estado.tipo+'productosAgrupados'+lineaPedido.producto.id];
+			if(typeof(productoAgrupadoElementGraphic) == 'undefined'){				
+				productoAgrupadoElementGraphic = new ep.Interfaz.Entidad.ProductoAgrupadoElementoGrafico();
+				productoAgrupadoElementGraphic.create(lineaPedido.producto, finalState);
+				
+				elements['estado'+lineaPedido.estado.tipo+'productosAgrupados'+lineaPedido.producto.id] = productoAgrupadoElementGraphic;
+			}
+			return productoAgrupadoElementGraphic;
+		}
 		this.drawPanelCocinero = function(elementParent, panel){
 			var panelElementGraphic = this.createPanelCocinero(panel);
 			
@@ -68,6 +78,16 @@
 			panelElementGraphic.addEstado(estadoElementGraphic);
 			
 			this.drawVistaProductosAgrupadosPedidos(panel, estado);
+			this.drawVistaProductosAgrupados(panel, estado, finalState);
+		}
+		this.drawVistaProductosAgrupados = function(panel, estado, finalState){
+		    var panelElementGraphic = this.createPanelCocinero(panel);
+		    var estadoElementGraphic = this.createEstado(estado);
+		   
+		    var vistaProductosElementGraphic = new ep.Interfaz.Entidad.ProductosAgrupadosTablaElementoGrafico();
+		    vistaProductosElementGraphic.create(finalState);
+		    
+		    estadoElementGraphic.addVistaProductosAgrupados(vistaProductosElementGraphic);
 		}
 		this.drawVistaProductosAgrupadosPedidos = function (panel, estado){
 			var panelElementGraphic = this.createPanelCocinero(panel);
@@ -123,10 +143,18 @@
 			var estadoElementGraphic = panelElementGraphic.getEstado(lineaPedido.estado);         
 			var pedidoElementGraphic = estadoElementGraphic.getPedido(pedido);
 			
+			var productoAgrupadoElementGraphic = this.createProductoAgrupado(panel, lineaPedido, pedidoElementGraphic.finalState);
 			var productoElementGraphic = this.createLineaPedido(panel, lineaPedido, pedidoElementGraphic.finalState);
 			
 			if(!pedidoElementGraphic.hasLineaPedido(lineaPedido)){
-				estadoElementGraphic.addLineaPedido(pedidoElementGraphic, productoElementGraphic);
+			    estadoElementGraphic.addLineaPedido(pedidoElementGraphic, productoElementGraphic);
+			}
+			
+			if(!estadoElementGraphic.hasProductoAgrupado(lineaPedido.producto)){
+			    estadoElementGraphic.addProductoAgrupado(productoAgrupadoElementGraphic);
+			}
+			if(!estadoElementGraphic.hasProductoAgrupadoLineaPedido(lineaPedido)){
+			    estadoElementGraphic.addLineaPedidoVistaAgrupada(productoAgrupadoElementGraphic, lineaPedido);
 			}
 		}
 		this.redrawLineaPedido = function(panel, pedido, lineaPedido){

@@ -32,6 +32,8 @@ template.ESTADO = "../../../../bundles/servinowgestionpedidos/Templates/EstadoTe
 template.PEDIDO = "../../../../bundles/servinowgestionpedidos/Templates/PedidoTemplate.html.ejs";
 template.PRODUCTO = "../../../../bundles/servinowgestionpedidos/Templates/ProductoFilaTemplate.html.ejs";
 template.PRODUCTOSAGRUPADOSPEDIDOS = "../../../../bundles/servinowgestionpedidos/Templates/ProductosAgrupadosPedidosTemplate.html.ejs";
+template.PRODUCTOSAGRUPADOSTABLA = "../../../../bundles/servinowgestionpedidos/Templates/ProductosAgrupadosTablaTemplate.html.ejs";
+template.PRODUCTOAGRUPADO = "../../../../bundles/servinowgestionpedidos/Templates/ProductoAgrupadoFilaTemplate.html.ejs";
 
 $(document).ready(function() {
     // Comprobar si el usuario es un camarero o cocinero
@@ -50,7 +52,7 @@ $(document).ready(function() {
 	    im.drawUpdateEstadoLineaPedido(panel, pedido, lineaPedido, estado);
 	});
     });
-
+    
     var panel;
     if(ep.panelActivo == ep.Constant.COCINERO){
 	panel = im.cargarPanelCocinero($('#content'));
@@ -66,6 +68,24 @@ $(document).ready(function() {
 	im.loadPedidos(function(pedidos){
 	    im.drawNewPedidos(panel, pedidos);
 	});
+    });
+    
+    em.addEventChangeVistaPedidos(function(){
+	var estadoElementGraphic = $(this).parents(".estado").data("element");
+	
+	$(this).parents(".botonera").find('button').removeAttr('disabled');
+	$(this).attr('disabled', 'disabled');
+	
+	estadoElementGraphic.changeVistaProductosAgrupadosPedidos();
+    });
+    
+    em.addEventChangeVistaProductos(function(){
+	var estadoElementGraphic = $(this).parents(".estado").data("element");
+	
+	$(this).parents(".botonera").find('button').removeAttr('disabled');
+	$(this).attr('disabled', 'disabled');
+	
+	estadoElementGraphic.changeVistaProductosAgrupados();
     });
 	
 });

@@ -4,7 +4,9 @@
 	this.element = null;
 	this.pedidosEG = {};
 	this.create = function(){
-	    var data = {};
+	    var data = {
+		
+	    };
 	    this.element = $(new EJS({
 		url: template
 	    }).render(data));
@@ -23,6 +25,12 @@
 	this.removePedido = function(pedido){
 	    var pedidoElementoGrafico = this.getPedido(pedido);
 	    pedidoElementoGrafico.hide();
+	}
+	this.show = function(){
+	   this.element.css('display', 'block');
+	}
+	this.hide = function(){
+	   this.element.css('display', 'none');
 	}
     }
 })(ep, template);

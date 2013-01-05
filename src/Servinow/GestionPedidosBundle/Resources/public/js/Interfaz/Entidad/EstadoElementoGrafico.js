@@ -4,6 +4,7 @@
 	this.element = null;
 	this.estado = null;
 	this.vistaAgrupadaPedido = null;
+	this.vistaAgrupadaProductos = null;
 	this.create = function(estado, finalState){
 	    var data = {
 		estado: estado,
@@ -15,28 +16,46 @@
 	    }).render(data));
 			
 	    this.estado = estado;
+	    
+	    this.element.data("element", this);
 			
 	    this.contentDiv = this.element.find('.contentDiv');
 			
 	    this.cantidadProductosElement = this.element.find('.cantidadProductos');
 	    this.cantidadProduct = 0;
-	    this.cambiarCantidadProductos();
+	    this.cantidadProductAgrupados = 0;
+	    this.cambiarCantidadProductos(this.cantidadProduct);
 	    return this;
+	}
+	this.changeVistaProductosAgrupadosPedidos = function(){
+	    this.vistaAgrupadaProductos.hide();
+	    this.vistaAgrupadaPedido.show();
+	    this.cambiarCantidadProductos();
+	    this.cambiarCantidadProductos(this.cantidadProduct);
+	}
+	this.changeVistaProductosAgrupados = function(){
+	    this.vistaAgrupadaPedido.hide();
+	    this.vistaAgrupadaProductos.show();
+	    this.cambiarCantidadProductos(this.cantidadProductAgrupados);
 	}
 	this.addVistaProductosAgrupadosPedidos= function(vistaPedidosElementoGrafico){
 	    this.vistaAgrupadaPedido = vistaPedidosElementoGrafico;
 	    this.contentDiv.append(vistaPedidosElementoGrafico.element);
 	}
-	this.cambiarCantidadProductos = function(){
-	    this.cantidadProductosElement.text("("+this.cantidadProduct+")");
+	this.addVistaProductosAgrupados= function(vistaProductosElementoGrafico){
+	    this.vistaAgrupadaProductos = vistaProductosElementoGrafico;
+	    this.contentDiv.append(vistaProductosElementoGrafico.element);
+	}
+	this.cambiarCantidadProductos = function(cantidad){
+	    this.cantidadProductosElement.text("("+cantidad+")");
 	}
 	this.incrLineasPedido = function(){
 	    this.cantidadProduct++;
-	    this.cambiarCantidadProductos();
+	    this.cambiarCantidadProductos(this.cantidadProduct);
 	}
 	this.decrLineasPedido = function(){
 	    this.cantidadProduct--;
-	    this.cambiarCantidadProductos();
+	    this.cambiarCantidadProductos(this.cantidadProduct);
 	}
 	this.addPedido = function(pedidoElementGraphic){			
 	    this.vistaAgrupadaPedido.addPedido(pedidoElementGraphic);
@@ -56,6 +75,20 @@
 			
 	    this.putTimerToRemovePedido(pedidoElementGraphic);
 	}
+	this.hasProductoAgrupadoLineaPedido = function(lineaPedido){
+	    return this.vistaAgrupadaProductos.hasProductoAgrupadoLineaPedido(lineaPedido);
+	}
+	this.hasProductoAgrupado = function(producto){
+	    return this.vistaAgrupadaProductos.hasProductoAgrupado(producto);
+	}
+	this.addProductoAgrupado = function(productoAgrupadoElementGraphic){
+	    this.cantidadProductAgrupados++;
+	    this.cambiarCantidadProductos(this.cantidadProductAgrupados);
+	    this.vistaAgrupadaProductos.addProductoAgrupado(productoAgrupadoElementGraphic);
+	}
+	this.addLineaPedidoVistaAgrupada = function(productoAgrupadoElementGraphic, lineaPedido){
+	    productoAgrupadoElementGraphic.addLineaPedido(lineaPedido);
+	}
 	this.addLineaPedido = function(pedidoElementGraphic, productoElementGraphic){
 	    pedidoElementGraphic.show();
 	    pedidoElementGraphic.addLineaPedido(productoElementGraphic);
@@ -65,7 +98,7 @@
 		if(pedidoElementGraphic.lineasPedidoCont >= pedidoElementGraphic.lineasPedidoTotal) {
 		    pedidoElementGraphic.hide();
 		    this.cantidadProduct -= pedidoElementGraphic.lineasPedidoCont;
-		    this.cambiarCantidadProductos();
+		    this.cambiarCantidadProductos(this.cantidadProduct);
 		}	
 	    } else {
 		if(pedidoElementGraphic.lineasPedidoNextStates >= pedidoElementGraphic.lineasPedidoTotal) {
@@ -91,7 +124,7 @@
 		    var estadoElementGraphic = this;
 		    setTimeout(function(){
 			estadoElementGraphic.removePedido(pedidoElementGraphic.pedido);
-			estadoElementGraphic.cambiarCantidadProductos();
+			estadoElementGraphic.cambiarCantidadProductos(this.cantidadProduct);
 		    },ep.Constant.TIME_TO_REMOVE_FINAL_ORDER);
 		}	
 	    } else {

@@ -95,7 +95,7 @@ class APIController extends Controller {
 
 	$idLineaPedido = $peticion->request->get("id");
 	$estadoLineaPedido = $peticion->request->get("estado");
-
+	
 	$lineaPedido = $em->getRepository('ServinowEntitiesBundle:LineaPedido')->find($idLineaPedido);
 	$lineaPedido->setEstado($this->stateIntToStr($estadoLineaPedido));
 	$em->persist($lineaPedido);

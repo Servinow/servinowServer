@@ -52,32 +52,41 @@
 
 
 
-.listaProductos{
+.listaProductos, .listaProductosAgrupadosProductos {
     width: 100%;
     border-collapse: separate;
     border-spacing:  1px;
 }
 
-.listaProductos > tbody > tr:first-child > td {
+.listaProductos > tbody > tr:first-child > td,
+.listaProductosAgrupadosProductos > tbody > tr:first-child > td
+{
     font-size: 12px;
     background-color: #DDD;
 }
 
-.listaProductos > tbody > tr:first-child > td > span {
+.listaProductos > tbody > tr:first-child > td > span,
+.listaProductosAgrupadosProductos > tbody > tr:first-child > td > span
+{
     font-size: 12px;
 
 }
 
-.listaProductos > tbody > tr > td > span {
+.listaProductos > tbody > tr > td > span,
+.listaProductosAgrupadosProductos > tbody > tr > td {
     font-size: 11px;
 
 }
 
-.listaProductos > tbody > tr > td {
+.listaProductos > tbody > tr > td,
+.listaProductosAgrupadosProductos > tbody > tr > td
+{
     background-color: #EEE;
 }
 
-.listaProductos > tbody > tr > td {
+.listaProductos > tbody > tr > td,
+.listaProductosAgrupadosProductos > tbody > tr > td
+{
     padding: 2px;
     text-align: center;
 }
