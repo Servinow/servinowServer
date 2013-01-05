@@ -208,7 +208,7 @@ class ApiController extends Controller
         
         $mesa_id = $data->mesa_id;
         $pedido_id_online = $data->pedidos;
-        $metodo_pago = $pIdOnline->metodo_pago;
+        $metodo_pago = $data->metodo_pago;
         
         foreach ($pedido_id_online as $pIdOnline) {
             $pedidoId = $pIdOnline->pedido_id_online;
