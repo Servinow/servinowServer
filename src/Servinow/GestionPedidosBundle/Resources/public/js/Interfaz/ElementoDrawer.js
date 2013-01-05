@@ -38,12 +38,12 @@
 			return pedidoElementGraphic;		
 		}
 		this.createLineaPedido = function(panel ,lineaPedido, finalState){
-			var productoElementGraphic = elements['lineapedido'+lineaPedido.id];
+			var productoElementGraphic = elements['lineapedido'+lineaPedido.id + 'pedido' + lineaPedido.pedidoId];
 			if(typeof(productoElementGraphic) == 'undefined'){				
 				productoElementGraphic = new ep.Interfaz.Entidad.ProductoElementoGrafico();
 				productoElementGraphic.create(lineaPedido, finalState);
 				
-				elements['lineapedido'+lineaPedido.id] = productoElementGraphic;
+				elements['lineapedido'+lineaPedido.id + 'pedido' + lineaPedido.pedidoId] = productoElementGraphic;
 			}
 			return productoElementGraphic;
 		}
@@ -130,7 +130,7 @@
 			}
 		}
 		this.redrawLineaPedido = function(panel, pedido, lineaPedido){
-			delete elements['lineapedido'+lineaPedido.id];
+			delete elements['lineapedido'+lineaPedido.id + 'pedido' + lineaPedido.pedidoId];
 			this.drawLineaPedido(panel, pedido, lineaPedido);
 		}
 		this.drawUpdatedEstadoLineaPedido = function(panel, pedido, lineaPedido, estado){

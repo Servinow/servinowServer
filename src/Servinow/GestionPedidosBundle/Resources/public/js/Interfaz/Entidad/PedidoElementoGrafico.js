@@ -33,7 +33,8 @@
 	    return this;
 	}
 	this.addLineaPedido = function(productoElementGraphic){
-	    this.lineaPedidoEG['lineaPedido'+productoElementGraphic.lineaPedido.id] = productoElementGraphic;
+	    this.lineaPedidoEG['lineaPedido'+productoElementGraphic.lineaPedido.id 
+                    + 'pedido' + productoElementGraphic.lineaPedido.pedidoId] = productoElementGraphic;
 	    this.listaProductosElement.append(productoElementGraphic.element);
 			
 	    this.lineasPedidoCont++;
@@ -64,19 +65,21 @@
 	    
 	}
 	this.getLineaPedido = function(lineaPedido){
-	    return this.lineaPedidoEG['lineaPedido'+lineaPedido.id];
+	    return this.lineaPedidoEG['lineaPedido'+lineaPedido.id + 
+                    'pedido' + lineaPedido.pedidoId];
 			
 	}
 	this.removeLineaPedido = function(productoElementGraphic){
 	    this.lineasPedidoNextStates++;
 	    this.getLineaPedido(productoElementGraphic.lineaPedido).element.detach();
-	    delete this.lineaPedidoEG['lineaPedido'+productoElementGraphic.lineaPedido.id];
+	    delete this.lineaPedidoEG['lineaPedido'+productoElementGraphic.lineaPedido.id + 
+                    'pedido' + productoElementGraphic.lineaPedido.pedidoId];
 			
 	    this.updateProgressBar();
 	}
 	this.hasLineaPedido = function(lineaPedido){
-	    return (typeof( this.lineaPedidoEG['lineaPedido'+lineaPedido.id]) == 'undefined')? false: true;
-			
+	    return (typeof( this.lineaPedidoEG['lineaPedido'+lineaPedido.id + 
+                    'pedido' + lineaPedido.pedidoId]) == 'undefined')? false: true;
 	}
 	this.hide = function(){
 	    this.element.css('display', 'none');

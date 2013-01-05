@@ -1,13 +1,13 @@
 (function(ep){
 	var lineaPedidos = {};
 	ep.Manejador.LineaPedidoManager = function(){
-		this.add = function(id, producto, cantidad, estado){
-			if(lineaPedidos["id"+id] != null) return lineaPedidos["id"+id];
+		this.add = function(id, pedidoId, producto, cantidad, estado){
+			if(lineaPedidos["id"+id+"pedidoId"+pedidoId] != null) return lineaPedidos["id"+id+"pedidoId"+pedidoId];
 			
-			var lineaPedido = new ep.Entidad.LineaPedido(producto, cantidad, estado);
+			var lineaPedido = new ep.Entidad.LineaPedido(pedidoId, producto, cantidad, estado);
 			lineaPedido.id = id;
 
-			lineaPedidos["id"+id] = lineaPedido;
+			lineaPedidos["id"+id+"pedidoId"+pedidoId] = lineaPedido;
 			
 			return lineaPedido;
 		}
@@ -20,6 +20,7 @@
 				type: "POST",
 				data: {
 					id: lineaPedido.id,
+                                        pedido: lineaPedido.pedidoId,
 					estado: estado
 				},
 				dataType: "json",
