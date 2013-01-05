@@ -1,0 +1,7 @@
+parameters:
+#    servinow_factura.example.class: Servinow\FacturaBundle\Example
+
+services:
+#    servinow_factura.example:
+#        class: %servinow_factura.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,16 @@
+parameters:
+    database_driver: pdo_mysql
+    database_host: db425443391.db.1and1.com
+    database_port: null
+    database_name: db425443391
+    database_user: dbo425443391
+    database_password: servinow
+    
+    mailer_transport: smtp
+    mailer_host: localhost
+    mailer_user: null
+    mailer_password: null
+    
+    locale: es
+    secret: d293eea9b52181ff6ab43c32d2b731e0
+    database_path: null

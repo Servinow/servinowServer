@@ -2,7 +2,7 @@
 
 {% block central_movimientos_caja_general%}
 
-<table id="mesas">
+<table id="mesas" class="display tabla_producto_id">
     <thead>
         <tr>
             <th>Mesa</th>
@@ -14,7 +14,7 @@
         {% for mesa in mesas %}
             <tr>
                 <td>{{mesa.id}}</td>
-                <td>{{mesa.ingresos}}</td>
+                <td>{{mesa.ingresos|number_format(2)}} &euro;</td>
                 <td>{{mesa.pedidos}}</td>
             </tr>
         {% endfor %}

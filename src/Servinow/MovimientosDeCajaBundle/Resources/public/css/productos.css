@@ -16,7 +16,10 @@
 }
 
 #nav_movimientos_caja_productos_container{
-    margin: 22px;
+    margin-top: 22px;
+    text-align: left;
+    margin-left: 50px;
+    float: left;
 }
 
 #central_movimientos_caja_productos{
@@ -31,12 +34,13 @@
 
 #productos_nav {
 	position: relative;
-	top: -71px;
-	float: right;
+	float: left;
+        margin-top: 22px;
+        text-align: left;
+        margin-left: 20px;
 }
 #productos_nav a {
 	float: right;
-	margin-top: 4px;
 }
 
 #titulo_movimientos_caja_productos{
@@ -102,5 +106,6 @@
     margin-left: 0;
 }
 .formulario_buscar{
-    margin-left: 25px;
+    margin-left: 0px;
+    float: left;
 }

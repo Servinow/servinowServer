@@ -1,0 +1,54 @@
+Servinow\EntitiesBundle\Entity\Restaurante:
+    properties:
+        nombre:
+            - NotBlank: ~
+            - Type: string
+            - MinLength: 3
+            - MaxLength: 255
+        nombreCompletoTitular:
+            - NotBlank: ~
+            - Type: string
+            - MinLength: 3
+            - MaxLength: 255
+        NIFTitular:
+            - NotBlank: ~
+            - Type: string
+            - MinLength: 3
+            - MaxLength: 255
+        direccion:
+            - NotBlank: ~
+            - Type: string
+            - MinLength: 3
+            - MaxLength: 255
+        ciudad:
+            - NotBlank: ~
+            - Type: string
+            - MinLength: 3
+            - MaxLength: 255
+        codigoPostal:
+            - NotBlank: ~
+            - Type: int
+            - MinLength: 3
+            - MaxLength: 255
+            - Min: 0
+        provincia:
+            - NotBlank: ~
+            - Type: string
+            - MinLength: 3
+            - MaxLength: 255
+        telefonoFijo:
+            - NotBlank: ~
+            - Type: numeric
+            - MinLength: 3
+            - MaxLength: 255
+        telefonoMovil:
+            - NotBlank: ~
+            - Type: numeric
+            - MinLength: 3
+            - MaxLength: 255
+        fax:
+            - Type: numeric
+            - MinLength: 3
+            - MaxLength: 255
+        
+            

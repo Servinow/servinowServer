@@ -41,6 +41,76 @@ class Restaurante
      * @ORM\Column(name="emailCuentaPaypal", type="string", length=255)
      */
     private $emailCuentaPaypal;
+    
+    /**
+     * @var string $nombreCompletoTitular
+     *
+     * @ORM\Column(name="nombreCompletoTitular", type="string", length=255)
+     */
+    private $nombreCompletoTitular;
+    
+    /**
+     * @var string $CIFTitular
+     *
+     * @ORM\Column(name="CIFTitular", type="string", length=255)
+     */
+    private $CIFTitular;
+    
+    /**
+     * @var string $NIFTitular
+     *
+     * @ORM\Column(name="NIFTitular", type="string", length=255)
+     */
+    private $NIFTitular;
+    
+    /**
+     * @var string $direccion
+     *
+     * @ORM\Column(name="direccion", type="string", length=255)
+     */
+    private $direccion;
+    
+    /**
+     * @var string $ciudad
+     *
+     * @ORM\Column(name="ciudad", type="string", length=255)
+     */
+    private $ciudad;
+    
+    /**
+     * @var string $provincia
+     *
+     * @ORM\Column(name="provincia", type="string", length=255)
+     */
+    private $provincia;
+    
+    /**
+     * @var integer $codigoPostal
+     *
+     * @ORM\Column(name="codigoPostal", type="integer")
+     */
+    private $codigoPostal;
+    
+    /**
+     * @var string $telefonoFijo
+     *
+     * @ORM\Column(name="telefonoFijo", type="string")
+     */
+    private $telefonoFijo;
+    
+    /**
+     * @var string $telefonoFijo
+     *
+     * @ORM\Column(name="telefonoMovil", type="string")
+     */
+    private $telefonoMovil;
+    
+    /**
+     * @var string $fax
+     *
+     * @ORM\Column(name="fax", type="string")
+     */
+    private $fax;
 
     /**
      * @var float $impuesto
@@ -63,12 +133,18 @@ class Restaurante
      * @ORM\OneToMany(targetEntity="Mesa", mappedBy="restaurante")
      */
     private $mesas;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Categoria", mappedBy="restaurante")
+     */
+    private $categorias;
 
     
     public function __construct() {
         $this->pedidos = new \Doctrine\Common\Collections\ArrayCollection();
         $this->productos = new \Doctrine\Common\Collections\ArrayCollection();
         $this->mesas = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->categorias = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -270,5 +346,268 @@ class Restaurante
     public function getMesas()
     {
         return $this->mesas;
+    }
+
+    /**
+     * Set direccion
+     *
+     * @param string $direccion
+     * @return Restaurante
+     */
+    public function setDireccion($direccion)
+    {
+        $this->direccion = $direccion;
+    
+        return $this;
+    }
+
+    /**
+     * Get direccion
+     *
+     * @return string 
+     */
+    public function getDireccion()
+    {
+        return $this->direccion;
+    }
+
+    /**
+     * Set ciudad
+     *
+     * @param string $ciudad
+     * @return Restaurante
+     */
+    public function setCiudad($ciudad)
+    {
+        $this->ciudad = $ciudad;
+    
+        return $this;
+    }
+
+    /**
+     * Get ciudad
+     *
+     * @return string 
+     */
+    public function getCiudad()
+    {
+        return $this->ciudad;
+    }
+
+    /**
+     * Set provincia
+     *
+     * @param string $provincia
+     * @return Restaurante
+     */
+    public function setProvincia($provincia)
+    {
+        $this->provincia = $provincia;
+    
+        return $this;
+    }
+
+    /**
+     * Get provincia
+     *
+     * @return string 
+     */
+    public function getProvincia()
+    {
+        return $this->provincia;
+    }
+
+    /**
+     * Set codigoPostal
+     *
+     * @param integer $codigoPostal
+     * @return Restaurante
+     */
+    public function setCodigoPostal($codigoPostal)
+    {
+        $this->codigoPostal = $codigoPostal;
+    
+        return $this;
+    }
+
+    /**
+     * Get codigoPostal
+     *
+     * @return integer 
+     */
+    public function getCodigoPostal()
+    {
+        return $this->codigoPostal;
+    }
+
+    /**
+     * Set telefonoFijo
+     *
+     * @param string $telefonoFijo
+     * @return Restaurante
+     */
+    public function setTelefonoFijo($telefonoFijo)
+    {
+        $this->telefonoFijo = $telefonoFijo;
+    
+        return $this;
+    }
+
+    /**
+     * Get telefonoFijo
+     *
+     * @return string
+     */
+    public function getTelefonoFijo()
+    {
+        return $this->telefonoFijo;
+    }
+
+    /**
+     * Set telefonoMovil
+     *
+     * @param string $telefonoMovil
+     * @return Restaurante
+     */
+    public function setTelefonoMovil($telefonoMovil)
+    {
+        $this->telefonoMovil = $telefonoMovil;
+    
+        return $this;
+    }
+
+    /**
+     * Get telefonoMovil
+     *
+     * @return string 
+     */
+    public function getTelefonoMovil()
+    {
+        return $this->telefonoMovil;
+    }
+
+    /**
+     * Set fax
+     *
+     * @param string $fax
+     * @return Restaurante
+     */
+    public function setFax($fax)
+    {
+        $this->fax = $fax;
+    
+        return $this;
+    }
+
+    /**
+     * Get fax
+     *
+     * @return string
+     */
+    public function getFax()
+    {
+        return $this->fax;
+    }
+
+    /**
+     * Set nombreCompletoTitular
+     *
+     * @param string $nombreCompletoTitular
+     * @return Restaurante
+     */
+    public function setNombreCompletoTitular($nombreCompletoTitular)
+    {
+        $this->nombreCompletoTitular = $nombreCompletoTitular;
+    
+        return $this;
+    }
+
+    /**
+     * Get nombreCompletoTitular
+     *
+     * @return string 
+     */
+    public function getNombreCompletoTitular()
+    {
+        return $this->nombreCompletoTitular;
+    }
+
+    /**
+     * Set CIFTitular
+     *
+     * @param string $cIFTitular
+     * @return Restaurante
+     */
+    public function setCIFTitular($cIFTitular)
+    {
+        $this->CIFTitular = $cIFTitular;
+    
+        return $this;
+    }
+
+    /**
+     * Get CIFTitular
+     *
+     * @return string 
+     */
+    public function getCIFTitular()
+    {
+        return $this->CIFTitular;
+    }
+
+    /**
+     * Set NIFTitular
+     *
+     * @param string $nIFTitular
+     * @return Restaurante
+     */
+    public function setNIFTitular($nIFTitular)
+    {
+        $this->NIFTitular = $nIFTitular;
+    
+        return $this;
+    }
+
+    /**
+     * Get NIFTitular
+     *
+     * @return string 
+     */
+    public function getNIFTitular()
+    {
+        return $this->NIFTitular;
+    }
+
+    /**
+     * Add categorias
+     *
+     * @param Servinow\EntitiesBundle\Entity\Categoria $categorias
+     * @return Restaurante
+     */
+    public function addCategoria(\Servinow\EntitiesBundle\Entity\Categoria $categorias)
+    {
+        $this->categorias[] = $categorias;
+    
+        return $this;
+    }
+
+    /**
+     * Remove categorias
+     *
+     * @param Servinow\EntitiesBundle\Entity\Categoria $categorias
+     */
+    public function removeCategoria(\Servinow\EntitiesBundle\Entity\Categoria $categorias)
+    {
+        $this->categorias->removeElement($categorias);
+    }
+
+    /**
+     * Get categorias
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getCategorias()
+    {
+        return $this->categorias;
     }
 }

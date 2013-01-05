@@ -27,20 +27,6 @@ class Mesa
      * @ORM\Column(name="ultimaActualizacion", type="integer")
      */
     private $ultimaActualizacion;
-	
-	/**
-	 * @var integer $min
-	 * 
-	 * @ORM\Column(name="min", type="integer")
-	 */
-	private $min;
-	
-	/**
-	 * @var integer $max
-	 * 
-	 * @ORM\Column(name="max", type="integer")
-	 */
-	private $max;
 
     /**
      * @ORM\OneToMany(targetEntity="Pedido", mappedBy="mesa")
@@ -149,49 +135,4 @@ class Mesa
         return $this->restaurante;
     }
 
-    /**
-     * Set min
-     *
-     * @param integer $min
-     * @return Mesa
-     */
-    public function setMin($min)
-    {
-        $this->min = $min;
-    
-        return $this;
-    }
-
-    /**
-     * Get min
-     *
-     * @return integer 
-     */
-    public function getMin()
-    {
-        return $this->min;
-    }
-
-    /**
-     * Set max
-     *
-     * @param integer $max
-     * @return Mesa
-     */
-    public function setMax($max)
-    {
-        $this->max = $max;
-    
-        return $this;
-    }
-
-    /**
-     * Get max
-     *
-     * @return integer 
-     */
-    public function getMax()
-    {
-        return $this->max;
-    }
 }

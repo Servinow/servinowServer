@@ -12,4 +12,41 @@ use Doctrine\ORM\EntityRepository;
  */
 class RestauranteRepository extends EntityRepository
 {
+    public function actualizarRestaurante($restaurantID, 
+            $name,
+            $nombreCompletoTitular,
+            $NIFTitular,
+            $direccion,
+            $ciudad,
+            $codigoPostal,
+            $provincia,
+            $telefonoFijo,
+            $telefonoMovil,
+            $fax
+            ){
+        $em = $this->getEntityManager();
+        $restaurante = $em->
+                getRepository('ServinowEntitiesBundle:Restaurante')->
+                find($restaurantID);
+
+        if (!$restaurante) {
+            throw $this->createNotFoundException(
+                'No restaurant found for id '.$restaurantID
+            );
+        }
+
+        $restaurante->setNombre($name);
+        $restaurante->setNombreCompletoTitular($nombreCompletoTitular);
+        $restaurante->setNIFTitular($NIFTitular);
+        $restaurante->setDireccion($direccion);
+        $restaurante->setCiudad($ciudad);
+        $restaurante->setCodigoPostal($codigoPostal);
+        $restaurante->setProvincia($provincia);
+        $restaurante->setTelefonoFijo($telefonoFijo);
+        $restaurante->setTelefonoMovil($telefonoMovil);
+        $restaurante->setFax($fax);
+        
+        $em->flush();
+
+    }
 }

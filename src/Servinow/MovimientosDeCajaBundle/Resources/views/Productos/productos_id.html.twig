@@ -1,10 +1,25 @@
 {% extends 'ServinowMovimientosDeCajaBundle::Productos/base.html.twig' %}
 
-{%block central_movimientos_caja_productos%}
 
-<h1>{{producto.id}}</h1>
-<h1>{{producto.nombre}}</h1>
-<h1>{{producto.cantidad}}</h1>
-<h1>{{producto.ingresos}}</h1>
+
+{%block central_movimientos_caja_productos%}
+<table id="TablaProductoId" class="display tabla_producto_id">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>Ingresos</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{producto.id}}</td>
+            <td>{{producto.nombre}}</td>
+            <td>{{producto.cantidad}}</td>
+            <td>{{producto.ingresos|number_format(2)}} &euro;</td>
+        </tr>
+    </tbody>
+</table>
 
 {%endblock%}

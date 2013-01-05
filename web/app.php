@@ -1,9 +1,11 @@
 <?php
 
-umask(0000);
-
 use Symfony\Component\ClassLoader\ApcClassLoader;
 use Symfony\Component\HttpFoundation\Request;
+
+umask(0000);
+
+date_default_timezone_set('UTC');
 
 $loader = require_once __DIR__.'/../app/bootstrap.php.cache';
 
@@ -17,7 +19,7 @@ $loader->register(true);
 require_once __DIR__.'/../app/AppKernel.php';
 //require_once __DIR__.'/../app/AppCache.php';
 
-$kernel = new AppKernel('prod', false);
+$kernel = new AppKernel('prod', true);
 $kernel->loadClassCache();
 //$kernel = new AppCache($kernel);
 $request = Request::createFromGlobals();

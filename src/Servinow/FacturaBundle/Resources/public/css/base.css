@@ -1,0 +1,33 @@
+/* 
+    Document   : movimientos
+    Created on : 01-dic-2012, 14:10:34
+    Author     : escrichov
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+#div_formulario_factura{
+    position:relative;
+    width: 500px;
+    margin-top: 20px;
+    margin-left: 50px;
+    float:left;
+}
+
+#formulario_factura div{
+    margin-top: 10px;
+}
+
+#formulario_factura div > input{
+    width: 300px;
+    float:right;
+}
+
+#formulario_factura label{
+    margin-right: 50px;
+    width: 500px;
+}
+
+.boton_guardar{
+    margin-top: 50px;
+}

@@ -1,3 +1,11 @@
+servinow_api:
+    resource: "@ServinowApiBundle/Resources/config/routing.yml"
+    prefix:   /{restaurantID}/api
+
+servinow_factura:
+    resource: "@ServinowFacturaBundle/Resources/config/routing.yml"
+    prefix:   /{restaurantID}/factura
+
 servinow_gestion_pedidos:
     resource: "@ServinowGestionPedidosBundle/Resources/config/routing.yml"
     prefix:   /{restaurantID}/pedidos/

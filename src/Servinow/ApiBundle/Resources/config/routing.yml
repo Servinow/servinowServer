@@ -1,0 +1,36 @@
+servinow_api_confirmar:
+    pattern:  /confirmar
+    defaults: { _controller: ServinowApiBundle:Api:confirmar }
+    requirements:
+        _method: POST
+      
+servinow_api_borrar:
+    pattern: /borrar
+    defaults: { _controller: ServinowApiBundle:Api:borrar }
+    requirements:
+        _method: POST
+      
+servinow_api_consultar:
+    pattern: /consultar
+    defaults: { _controller: ServinowApiBundle:Api:consultar }
+    requirements:
+        _method: POST
+      
+servinow_api_pagar:
+    pattern: /pagar
+    defaults: { _controller: ServinowApiBundle:Api:pagar }
+    requirements:
+        _method: POST
+        
+servinow_api_categoria:
+    pattern: /categoria
+    defaults: { _controller: ServinowApiBundle:Api:categoria }
+    requirements:
+        _method: GET
+
+servinow_api_restaurante:
+    pattern: /restaurante
+    defaults: { _controller: ServinowApiBundle:Api:restaurante }
+    requirements: 
+        _method: GET
+    

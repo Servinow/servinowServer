@@ -1,7 +1,7 @@
 {% extends 'ServinowMovimientosDeCajaBundle::General/base.html.twig' %}
 
 {%block javascripts_end_body %}
-<script type="text/javascript" src="{{asset('bundles/servinowmovimientosdecaja/js/pago.js')}}"></script>
+<script type="text/javascript" src="{{asset('bundles/servinowmovimientosdecaja/js/caja.js')}}"></script>
 {%endblock %}
 
 {% block central_movimientos_caja_general%}
@@ -24,4 +24,7 @@
         </tr>
     </tbody>
 </table>​
+<script>
+    $("#tablePago").createPieChart(490,300,380,150,100,'#fff');
+</script>
 {% endblock %}
