@@ -53,6 +53,28 @@ $(document).ready(function() {
 	});
     });
     
+    em.addEventNextStateProductos(function(e){
+	e.stopPropagation();
+	var producto = $(this).parents(".productoAgrupado").data("obj");
+	var estado = $(this).parents(".estado").data("obj");
+	var panel = $(this).parents(".panel").data("obj");
+		
+	im.saveUpdateEstadoProductos(panel, producto, estado.tipo, function(data){
+	    var lineaPedidoObj;
+	    var lineaPedido;
+	    var pedido;	    
+	    for(var i = 0; i < data.length ; i++){
+		lineaPedido = data[i];
+		
+		lineaPedidoObj = im.addLineaPedido(lineaPedido, lineaPedido.pedido);
+		
+		pedido = im.getPedido(lineaPedido.pedido);
+		
+		im.drawUpdateEstadoLineaPedido(panel, pedido, lineaPedidoObj, lineaPedido.estado);
+	    }
+	});
+    });
+    
     var panel;
     if(ep.panelActivo == ep.Constant.COCINERO){
 	panel = im.cargarPanelCocinero($('#content'));

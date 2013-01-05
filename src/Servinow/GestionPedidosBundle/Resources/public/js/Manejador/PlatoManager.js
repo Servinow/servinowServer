@@ -11,5 +11,17 @@
 			
 			return plato;
 		}
+		this.saveUpdateEstado = function(producto, estado, onSuccess){
+			$.ajax({
+				url: '../API/update/estado/producto',
+				type: "POST",
+				data: {
+					id: producto.id,
+					estado: estado
+				},
+				dataType: "json",
+				success: onSuccess
+			});
+		}
 	}
 })(ep);

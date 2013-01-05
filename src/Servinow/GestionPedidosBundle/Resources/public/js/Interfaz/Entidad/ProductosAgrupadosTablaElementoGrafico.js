@@ -24,6 +24,9 @@
 	    }
 	    return false;
 	}
+	this.getProductoAgrupado = function(producto){
+	    return  this.productosAgrupadosEG['productoAgrupado'+producto.id];
+	}
 	this.hasProductoAgrupado = function(producto){
 	    for(var pa in this.productosAgrupadosEG) {
 		if(this.productosAgrupadosEG[pa].producto.id == producto.id) return true;

@@ -17,6 +17,7 @@
 	    }).render(data));
 	    
 	    this.element.data("element", this);
+	    this.element.data("obj", producto);
 	    
 	    this.cantidadElement = this.element.find('.cantidad');
 	    
@@ -30,6 +31,7 @@
 	    this.cantidadElement.text(this.cantidad);
 	}
 	this.addLineaPedido = function(lineaPedido){
+	    this.show();
 	    this.cantidad += lineaPedido.cantidad;
 	    this.cambiarCantidad();
 	    
@@ -41,6 +43,21 @@
 	    }
 	    
 	    return false;
+	}
+	this.removeLineaPedido = function(lineaPedido){
+	    delete this.lineasPedido['lineaPedido'+lineaPedido.id];
+	    
+	    this.cantidad -= lineaPedido.cantidad;
+	    this.cambiarCantidad();
+	    
+	    if(this.cantidad == 0) this.hide();
+	    
+	}
+	this.show = function(){
+	    this.element.css('display', 'table-row');
+	}
+	this.hide = function(){
+	    this.element.css('display', 'none');
 	}
 	
     }

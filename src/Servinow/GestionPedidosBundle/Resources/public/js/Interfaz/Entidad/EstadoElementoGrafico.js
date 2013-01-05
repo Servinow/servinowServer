@@ -5,6 +5,7 @@
 	this.estado = null;
 	this.vistaAgrupadaPedido = null;
 	this.vistaAgrupadaProductos = null;
+	this.vistaActiva = null;
 	this.create = function(estado, finalState){
 	    var data = {
 		estado: estado,
@@ -18,25 +19,28 @@
 	    this.estado = estado;
 	    
 	    this.element.data("element", this);
+	    this.element.data("obj", estado);
 			
 	    this.contentDiv = this.element.find('.contentDiv');
 			
 	    this.cantidadProductosElement = this.element.find('.cantidadProductos');
 	    this.cantidadProduct = 0;
 	    this.cantidadProductAgrupados = 0;
+	    this.vistaActiva = 0;
 	    this.cambiarCantidadProductos(this.cantidadProduct);
 	    return this;
 	}
 	this.changeVistaProductosAgrupadosPedidos = function(){
 	    this.vistaAgrupadaProductos.hide();
 	    this.vistaAgrupadaPedido.show();
+	    this.vistaActiva = 0;
 	    this.cambiarCantidadProductos();
-	    this.cambiarCantidadProductos(this.cantidadProduct);
 	}
 	this.changeVistaProductosAgrupados = function(){
 	    this.vistaAgrupadaPedido.hide();
 	    this.vistaAgrupadaProductos.show();
-	    this.cambiarCantidadProductos(this.cantidadProductAgrupados);
+	    this.vistaActiva = 1;
+	    this.cambiarCantidadProductos();
 	}
 	this.addVistaProductosAgrupadosPedidos= function(vistaPedidosElementoGrafico){
 	    this.vistaAgrupadaPedido = vistaPedidosElementoGrafico;
@@ -47,15 +51,16 @@
 	    this.contentDiv.append(vistaProductosElementoGrafico.element);
 	}
 	this.cambiarCantidadProductos = function(cantidad){
+	    cantidad = (this.vistaActiva == 0)? this.cantidadProduct: this.cantidadProductAgrupados;
 	    this.cantidadProductosElement.text("("+cantidad+")");
 	}
 	this.incrLineasPedido = function(){
 	    this.cantidadProduct++;
-	    this.cambiarCantidadProductos(this.cantidadProduct);
+	    this.cambiarCantidadProductos();
 	}
 	this.decrLineasPedido = function(){
 	    this.cantidadProduct--;
-	    this.cambiarCantidadProductos(this.cantidadProduct);
+	    this.cambiarCantidadProductos();
 	}
 	this.addPedido = function(pedidoElementGraphic){			
 	    this.vistaAgrupadaPedido.addPedido(pedidoElementGraphic);
@@ -75,15 +80,25 @@
 			
 	    this.putTimerToRemovePedido(pedidoElementGraphic);
 	}
+	this.getProductoAgrupado = function(lineaPedido){
+	    return this.vistaAgrupadaProductos.getProductoAgrupado(lineaPedido.producto);
+	}
 	this.hasProductoAgrupadoLineaPedido = function(lineaPedido){
 	    return this.vistaAgrupadaProductos.hasProductoAgrupadoLineaPedido(lineaPedido);
+	}
+	this.removeLineaPedidoProductoAgrupado = function(productoAgrupadoElementGraphic, lineaPedido){
+	    productoAgrupadoElementGraphic.removeLineaPedido(lineaPedido);
+	    if(productoAgrupadoElementGraphic.cantidad == 0) {
+		this.cantidadProductAgrupados--;
+		this.cambiarCantidadProductos();		
+	    }
 	}
 	this.hasProductoAgrupado = function(producto){
 	    return this.vistaAgrupadaProductos.hasProductoAgrupado(producto);
 	}
 	this.addProductoAgrupado = function(productoAgrupadoElementGraphic){
 	    this.cantidadProductAgrupados++;
-	    this.cambiarCantidadProductos(this.cantidadProductAgrupados);
+	    this.cambiarCantidadProductos();
 	    this.vistaAgrupadaProductos.addProductoAgrupado(productoAgrupadoElementGraphic);
 	}
 	this.addLineaPedidoVistaAgrupada = function(productoAgrupadoElementGraphic, lineaPedido){
@@ -98,7 +113,7 @@
 		if(pedidoElementGraphic.lineasPedidoCont >= pedidoElementGraphic.lineasPedidoTotal) {
 		    pedidoElementGraphic.hide();
 		    this.cantidadProduct -= pedidoElementGraphic.lineasPedidoCont;
-		    this.cambiarCantidadProductos(this.cantidadProduct);
+		    this.cambiarCantidadProductos();
 		}	
 	    } else {
 		if(pedidoElementGraphic.lineasPedidoNextStates >= pedidoElementGraphic.lineasPedidoTotal) {
@@ -124,7 +139,7 @@
 		    var estadoElementGraphic = this;
 		    setTimeout(function(){
 			estadoElementGraphic.removePedido(pedidoElementGraphic.pedido);
-			estadoElementGraphic.cambiarCantidadProductos(this.cantidadProduct);
+			estadoElementGraphic.cambiarCantidadProductos();
 		    },ep.Constant.TIME_TO_REMOVE_FINAL_ORDER);
 		}	
 	    } else {

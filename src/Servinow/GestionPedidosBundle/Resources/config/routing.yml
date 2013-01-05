@@ -7,3 +7,7 @@ servinow_gestion_pedidos_api_pedidos:
 servinow_gestion_pedidos_api_update_estado_lineapedido:
     pattern:  /API/update/estado/lineapedido
     defaults: { _controller: ServinowGestionPedidosBundle:API:updateEstadoLineaPedido }
+servinow_gestion_pedidos_api_update_estado_producto:
+    pattern:  /API/update/estado/producto
+    defaults: { _controller: ServinowGestionPedidosBundle:API:updateEstadoProducto }  
+    

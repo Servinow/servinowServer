@@ -77,6 +77,11 @@
 			
 	    return lineaPedidoObj;
 	}
+	this.getPedido = function(pedidoId){
+	    var pedidoManager = new ep.Manejador.PedidoManager();
+	    
+	    return pedidoManager.getPedido(pedidoId);	    
+	}
 	this.drawUpdateEstadoLineaPedido = function(panel, pedido, lineaPedido, estado){
 	    var elementDrawer = new ep.Interfaz.ElementoDrawer();
                     
@@ -148,6 +153,11 @@
 			
 	    var lineaPedidoManager = new ep.Manejador.LineaPedidoManager();
 	    lineaPedidoManager.saveUpdateEstado(lineaPedido, estado, onSuccess);
-	}		
+	}
+	this.saveUpdateEstadoProductos = function(panel, producto, estado, onSuccess){
+	    var productoManager = new ep.Manejador.PlatoManager();
+	    
+	    productoManager.saveUpdateEstado(producto, estado, onSuccess);
+	}
     }
 })(ep);

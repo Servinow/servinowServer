@@ -98,7 +98,8 @@
 
 }
 
-.nextState{
+.nextState,
+.nextStateProducts {
     border: none;
     background: transparent;
     cursor: pointer;
