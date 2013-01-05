@@ -160,7 +160,7 @@ class ApiController extends Controller
         $em = $this->getDoctrine()->getManager();
         
         $mesa_id = $data->mesa_id;
-        $pedido_id_online = $data->pedido_id_online;
+        $pedido_id_online = $data->pedidos;
         
         $data_response = array();
         $i=0;
@@ -207,11 +207,11 @@ class ApiController extends Controller
         $em = $this->getDoctrine()->getManager();
         
         $mesa_id = $data->mesa_id;
-        $pedido_id_online = $data->pedido_id_online;
+        $pedido_id_online = $data->pedidos;
+        $metodo_pago = $pIdOnline->metodo_pago;
         
         foreach ($pedido_id_online as $pIdOnline) {
             $pedidoId = $pIdOnline->pedido_id_online;
-            $metodo_pago = $pIdOnline->metodo_pago;
             
             $pedido = $em->getRepository('ServinowEntitiesBundle:Pedido')->find($pedidoId);
             $pedido->setMetodoPago($metodo_pago);
