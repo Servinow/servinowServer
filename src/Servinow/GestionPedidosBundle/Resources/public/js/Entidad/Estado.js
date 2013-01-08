@@ -7,6 +7,10 @@
 	tipo: ep.Constant.ESTADO_COCINA,
 	nombre: "Cocinandose"
     };
+	ep.Entidad.Estado.PREPARANDOSE = {
+	tipo: ep.Constant.ESTADO_PREPARANDOSE,
+	nombre: "Preparandose"
+    };
     ep.Entidad.Estado.PREPARADO = {
 	tipo: ep.Constant.ESTADO_PREPARADO,
 	nombre: "Preparado"

@@ -29,7 +29,7 @@
 	    estados.push(ep.Entidad.Estado.COLA);
 	    estados[0].finalState = false;
 		estados[0].tipoProductos = [ep.Constant.BEBIDA];
-	    estados.push(ep.Entidad.Estado.COCINA);
+	    estados.push(ep.Entidad.Estado.PREPARANDOSE);
 	    estados[1].finalState = false;
 		estados[1].tipoProductos = [ep.Constant.BEBIDA];
 	    estados.push(ep.Entidad.Estado.PREPARADO);

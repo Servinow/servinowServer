@@ -18,7 +18,8 @@
 }
 
 .tituloEstadoDiv {
-    display: inline;
+    display: block;
+	margin-bottom: 5px;
 
 }
 

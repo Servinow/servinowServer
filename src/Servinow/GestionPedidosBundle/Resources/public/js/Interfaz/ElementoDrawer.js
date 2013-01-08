@@ -79,6 +79,8 @@
 			
 			this.drawVistaProductosAgrupadosPedidos(panel, estado);
 			this.drawVistaProductosAgrupados(panel, estado, finalState);
+			
+			estadoElementGraphic.changeVistaProductosAgrupadosPedidos();
 		}
 		this.drawVistaProductosAgrupados = function(panel, estado, finalState){
 		    var panelElementGraphic = this.createPanelCocinero(panel);

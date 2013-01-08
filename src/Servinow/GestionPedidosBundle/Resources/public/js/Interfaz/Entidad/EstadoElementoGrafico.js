@@ -31,12 +31,18 @@
 	    return this;
 	}
 	this.changeVistaProductosAgrupadosPedidos = function(){
-	    this.vistaAgrupadaProductos.hide();
+	    this.element.find(".botonera").find('button').removeAttr('disabled');
+		this.element.find(".vistaPedidos").attr('disabled', 'disabled');
+		
+		this.vistaAgrupadaProductos.hide();
 	    this.vistaAgrupadaPedido.show();
 	    this.vistaActiva = 0;
 	    this.cambiarCantidadProductos();
 	}
 	this.changeVistaProductosAgrupados = function(){
+		this.element.find(".botonera").find('button').removeAttr('disabled');
+		this.element.find(".vistaProductos").attr('disabled', 'disabled');
+		
 	    this.vistaAgrupadaPedido.hide();
 	    this.vistaAgrupadaProductos.show();
 	    this.vistaActiva = 1;

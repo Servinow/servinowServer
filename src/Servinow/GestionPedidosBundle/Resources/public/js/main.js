@@ -13,6 +13,7 @@ ep.Constant.TIME_TO_REMOVE_NOFINAL_ORDER = 1000;
 
 ep.Constant.ESTADO_COLA = 0;
 ep.Constant.ESTADO_COCINA = 1;
+ep.Constant.ESTADO_PREPARANDOSE = 1;
 ep.Constant.ESTADO_PREPARADO = 2;
 ep.Constant.ESTADO_TRANSITO = 3;
 ep.Constant.ESTADO_SERVIDO = 4;
@@ -94,19 +95,11 @@ $(document).ready(function() {
     
     em.addEventChangeVistaPedidos(function(){
 	var estadoElementGraphic = $(this).parents(".estado").data("element");
-	
-	$(this).parents(".botonera").find('button').removeAttr('disabled');
-	$(this).attr('disabled', 'disabled');
-	
 	estadoElementGraphic.changeVistaProductosAgrupadosPedidos();
     });
     
     em.addEventChangeVistaProductos(function(){
-	var estadoElementGraphic = $(this).parents(".estado").data("element");
-	
-	$(this).parents(".botonera").find('button').removeAttr('disabled');
-	$(this).attr('disabled', 'disabled');
-	
+	var estadoElementGraphic = $(this).parents(".estado").data("element");	
 	estadoElementGraphic.changeVistaProductosAgrupados();
     });
 	
