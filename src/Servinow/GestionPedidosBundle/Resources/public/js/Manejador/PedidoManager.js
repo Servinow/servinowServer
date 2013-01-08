@@ -14,6 +14,9 @@
 			if(jQuery.inArray(lineaPedido, pedido.lineasPedido) == -1) 
 				pedido.lineasPedido.push(lineaPedido);
 		}
+		this.getPedido = function(pedidoId){
+		    return pedidos["id"+pedidoId];
+		}
 		this.loadAll = function(){
 			
 		}

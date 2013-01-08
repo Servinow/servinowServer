@@ -7,10 +7,13 @@
 	    var estados = [];
 	    estados.push(ep.Entidad.Estado.COLA);
 	    estados[0].finalState = false;
+		estados[0].tipoProductos = [ep.Constant.PLATO];
 	    estados.push(ep.Entidad.Estado.COCINA);
 	    estados[1].finalState = false;
+		estados[1].tipoProductos = [ep.Constant.PLATO];
 	    estados.push(ep.Entidad.Estado.PREPARADO);
 	    estados[2].finalState = true;
+		estados[2].tipoProductos = [ep.Constant.PLATO];
 			
 	    var panel = panelManager.add(ep.Constant.COCINERO, estados);
 			
@@ -25,14 +28,19 @@
 	    var estados = [];
 	    estados.push(ep.Entidad.Estado.COLA);
 	    estados[0].finalState = false;
-	    estados.push(ep.Entidad.Estado.COCINA);
+		estados[0].tipoProductos = [ep.Constant.BEBIDA];
+	    estados.push(ep.Entidad.Estado.PREPARANDOSE);
 	    estados[1].finalState = false;
+		estados[1].tipoProductos = [ep.Constant.BEBIDA];
 	    estados.push(ep.Entidad.Estado.PREPARADO);
 	    estados[2].finalState = false;
+		estados[2].tipoProductos = [ep.Constant.PLATO, ep.Constant.BEBIDA];
 	    estados.push(ep.Entidad.Estado.TRANSITO);
 	    estados[3].finalState = false;
+		estados[3].tipoProductos = [ep.Constant.PLATO, ep.Constant.BEBIDA];
 	    estados.push(ep.Entidad.Estado.SERVIDO);
 	    estados[4].finalState = true;
+		estados[4].tipoProductos = [ep.Constant.PLATO, ep.Constant.BEBIDA];
 			
 	    var panel = panelManager.add(ep.Constant.COCINERO, estados);
 			
@@ -76,6 +84,11 @@
 	    var lineaPedidoObj = lineaPedidoManager.add(lineaPedido.id, pedidoId, producto, lineaPedido.cantidad, estado);
 			
 	    return lineaPedidoObj;
+	}
+	this.getPedido = function(pedidoId){
+	    var pedidoManager = new ep.Manejador.PedidoManager();
+	    
+	    return pedidoManager.getPedido(pedidoId);	    
 	}
 	this.drawUpdateEstadoLineaPedido = function(panel, pedido, lineaPedido, estado){
 	    var elementDrawer = new ep.Interfaz.ElementoDrawer();
@@ -148,6 +161,11 @@
 			
 	    var lineaPedidoManager = new ep.Manejador.LineaPedidoManager();
 	    lineaPedidoManager.saveUpdateEstado(lineaPedido, estado, onSuccess);
-	}		
+	}
+	this.saveUpdateEstadoProductos = function(panel, producto, estado, onSuccess){
+	    var productoManager = new ep.Manejador.PlatoManager();
+	    
+	    productoManager.saveUpdateEstado(producto, estado, onSuccess);
+	}
     }
 })(ep);

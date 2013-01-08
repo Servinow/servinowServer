@@ -1,6 +1,9 @@
-<tr id="productoAgrupado<%=producto.id%>">
+<tr id="productoAgrupado<%=producto.id%>" class="productoAgrupado">
 	<td><span><%=producto.nombre%></span></td>
-	<td><%=producto.cantidad%></td>
+	<td class="cantidad"></td>
+	<% if(!finalState) { %>
 	<td class="accionesProducto">
+	    <button class="nextStateProducts"><img src="../../../../bundles/servinowgestionpedidos/img/arrow_full_right_16.png" /></button>
 	</td>
+	<% } %>
 </tr>

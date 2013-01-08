@@ -3,6 +3,8 @@
 	this.id = null;
 
 	this.nombre = nombre;
+	
+	this.type = ep.Constant.PLATO;
 
 	this.cantidad = null;
     }
