@@ -21,7 +21,7 @@ ep.Constant.COCINERO = 0;
 ep.Constant.CAMARERO = 1;
 
 ep.Constant.PLATO = 0;
-ep.Constant.BEBIDA = 0;
+ep.Constant.BEBIDA = 1;
 
 ep.Constant.EVENT_NEXT_STATE = 0;
 

@@ -7,8 +7,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
 class APIController extends Controller {
+	public static $PRODUCTO_TIPO_PLATO = 0;
 
-    public function stateStrToInt($stateString) {
+	public function stateStrToInt($stateString) {
 	switch ($stateString) {
 	    case "cola":
 		return 0;
@@ -77,6 +78,7 @@ class APIController extends Controller {
 		$producto = array();
 		$producto['id'] = $lineasPedido[$j]->getProducto()->getId();
 		$producto['nombre'] = $lineasPedido[$j]->getProducto()->getNombre();
+		$producto['tipo'] = self::$PRODUCTO_TIPO_PLATO;
 
 		$lineaPedido['producto'] = $producto;
 

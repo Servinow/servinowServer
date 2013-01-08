@@ -7,10 +7,13 @@
 	    var estados = [];
 	    estados.push(ep.Entidad.Estado.COLA);
 	    estados[0].finalState = false;
+		estados[0].tipoProductos = [ep.Constant.PLATO];
 	    estados.push(ep.Entidad.Estado.COCINA);
 	    estados[1].finalState = false;
+		estados[1].tipoProductos = [ep.Constant.PLATO];
 	    estados.push(ep.Entidad.Estado.PREPARADO);
 	    estados[2].finalState = true;
+		estados[2].tipoProductos = [ep.Constant.PLATO];
 			
 	    var panel = panelManager.add(ep.Constant.COCINERO, estados);
 			
@@ -25,14 +28,19 @@
 	    var estados = [];
 	    estados.push(ep.Entidad.Estado.COLA);
 	    estados[0].finalState = false;
+		estados[0].tipoProductos = [ep.Constant.BEBIDA];
 	    estados.push(ep.Entidad.Estado.COCINA);
 	    estados[1].finalState = false;
+		estados[1].tipoProductos = [ep.Constant.BEBIDA];
 	    estados.push(ep.Entidad.Estado.PREPARADO);
 	    estados[2].finalState = false;
+		estados[2].tipoProductos = [ep.Constant.PLATO, ep.Constant.BEBIDA];
 	    estados.push(ep.Entidad.Estado.TRANSITO);
 	    estados[3].finalState = false;
+		estados[3].tipoProductos = [ep.Constant.PLATO, ep.Constant.BEBIDA];
 	    estados.push(ep.Entidad.Estado.SERVIDO);
 	    estados[4].finalState = true;
+		estados[4].tipoProductos = [ep.Constant.PLATO, ep.Constant.BEBIDA];
 			
 	    var panel = panelManager.add(ep.Constant.COCINERO, estados);
 			

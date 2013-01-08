@@ -104,29 +104,30 @@
 			}
 		}
 		this.drawPedido = function(panel, pedido){
-                        var panelElementGraphic = this.createPanelCocinero(panel);
-                        var estadoMin = pedido.lineasPedido[0].estado.tipo;
-                        var estadoMax = 0;
+            var panelElementGraphic = this.createPanelCocinero(panel);
+            var estadoMin = pedido.lineasPedido[0].estado.tipo;
+            var estadoMax = 0;
 			for(var j = 0; j < pedido.lineasPedido.length; ++j){
 				var lineaPedido = pedido.lineasPedido[j];
 				var estado = lineaPedido.estado;
-                                
-				if(panelElementGraphic.hasEstado(estado)){
+                
+				if(panelElementGraphic.hasEstado(estado) && panel.estados[estado.tipo].tipoProductos.indexOf(lineaPedido.producto.type) != -1){
 					var estadoElementGraphic = panelElementGraphic.getEstado(estado);
 					if(!estadoElementGraphic.hasPedido(pedido)){
-					    this.drawPedidoEnEstado(panel, pedido, estado);
+						this.drawPedidoEnEstado(panel, pedido, estado);
 					}
+					
 					this.drawLineaPedido(panel, pedido, lineaPedido);
                                         
-                                        if(estadoMin > estado.tipo) estadoMin = estado.tipo;
-                                        if(estadoMax < estado.tipo) estadoMax = estado.tipo;
+					if(estadoMin > estado.tipo) estadoMin = estado.tipo;
+					if(estadoMax < estado.tipo) estadoMax = estado.tipo;
 				}
 			}
                         
                         for(var state = estadoMin+1; state < estadoMax; ++state){
                             estado = panel.estados[state];
                             if(panelElementGraphic.hasEstado(estado)){
-				this.drawPedidoEnEstado(panel, pedido, estado);                                        
+								this.drawPedidoEnEstado(panel, pedido, estado);                                        
                             }
                             
                         }
@@ -137,7 +138,7 @@
 			
 			var pedidoElementGraphic = this.createPedidoEnEstado(estado, pedido, estadoElementGraphic.finalState);
 
-                        estadoElementGraphic.addPedido(pedidoElementGraphic);
+            estadoElementGraphic.addPedido(pedidoElementGraphic);
 		}
 		this.drawLineaPedido = function(panel, pedido, lineaPedido){
 			var panelElementGraphic = this.createPanelCocinero(panel);
@@ -145,8 +146,9 @@
 			var pedidoElementGraphic = estadoElementGraphic.getPedido(pedido);
 			var productoElementGraphic = this.createLineaPedido(panel, lineaPedido, pedidoElementGraphic.finalState);
 			
+			
 			if(!pedidoElementGraphic.hasLineaPedido(lineaPedido)){
-			    estadoElementGraphic.addLineaPedido(pedidoElementGraphic, productoElementGraphic);
+				estadoElementGraphic.addLineaPedido(pedidoElementGraphic, productoElementGraphic);
 			}
 			
 			this.drawLineaPedidoVistaAgrupadaProducto(panel, pedido, lineaPedido);
