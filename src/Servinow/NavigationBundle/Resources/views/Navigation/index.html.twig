@@ -36,7 +36,11 @@
 				{% render "ServinowNavigationBundle:Navigation:userAccountBlock" with {'restaurantID': restaurantID} %}
 			</header>
 			<article id="content" >
-				{% block content %}{% endblock %}
+				{% block content %}
+					Bienvenido a Servinow. Descargate la app para tu dispositivo ANDROID desde <a href="{{asset('downloads/Servinow - oficial.apk')}}" >aquí</a>.
+					<br>
+					Una gran red de restaurantes te está esperando.
+				{% endblock %}
 			</article>
 			<footer id="footer" >
 				<p>Servinow - HMI - UPV</p>
