@@ -35,4 +35,8 @@
         {% endblock %}
 	{% block title %}Gestión de estado de pedidos{% endblock %}
         
-        {% block content %}{% endblock %}
+        {% block content %}
+	<a href="{{path('servinow_gestion_pedidos_homepage', {'tipoEmpleado': 'cocinero', 'restaurantID': restaurantID})}}">Vista del cocinero</a>
+	<br>
+	<a href="{{path('servinow_gestion_pedidos_homepage', {'tipoEmpleado': 'camarero', 'restaurantID': restaurantID})}}">Vista del camarero</a>
+		{% endblock %}
