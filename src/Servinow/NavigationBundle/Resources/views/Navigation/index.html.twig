@@ -27,7 +27,6 @@
 								{#<li><a href="#TODO" >{{ "Creación de menús"  | trans }}</a></li>#}
 								<li><a href="{{path('servinow_movimientos_de_caja_general', {'restaurantID': restaurantID})}}" >{{ "Facturación y estadísticas"  | trans }}</a></li>
 								<li><a href="{{path('servinow_restaurant_drawer_homepage', {'restaurantID' : restaurantID} )}}" >{{ "Espacio del restaurante"  | trans }}</a></li>
-								<li><a href="#TODO" >{{ "Organizar mi restaurante"  | trans }}</a></li>
                                                                 <li><a href="{{path('servinow_factura_homepage', {'restaurantID': restaurantID})}}" >{{ "Datos de Facturación"  | trans }}</a></li>
 							</ul>
 						</li>
@@ -37,7 +36,7 @@
 				{% render "ServinowNavigationBundle:Navigation:userAccountBlock" with {'restaurantID': restaurantID} %}
 			</header>
 			<article id="content" >
-				{% block content %}Hello TODO!{% endblock %}
+				{% block content %}{% endblock %}
 			</article>
 			<footer id="footer" >
 				<p>Servinow - HMI - UPV</p>
