@@ -6,10 +6,16 @@
         Purpose of the stylesheet follows.
 */
 
+#content h2 {
+    color: #D94A38;
+    font-size: 1.5em;
+    margin: 20px;
+}
+
 #drawerContainer{
 	overflow: hidden;
-	width: 1290px;
-	padding: 20px;
+	width: 1100px;
+	padding: 5px;
 	margin: 0 auto;
 }
 
@@ -42,9 +48,9 @@
 
 #formDraggers{
 	float: right;
-	width: 600px;
+	width: 480px;
 	border: 1px solid black;
-	padding: 20px;
+	padding: 3px;
 }
 
 #formDraggers > div {
